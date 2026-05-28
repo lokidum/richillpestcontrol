@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en-AU">
+<html lang="en-AU">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,24 +7,20 @@
 <title>Pest Control Perth | Family Run Since 1959 | Richill Pest Control</title>
 <meta name="description" content="Three generations of Perth pest control since 1959. Termite specialists, low tox options, honest pricing. Call or text Mike on 0426 427 299." />
 
-<!-- Social cards -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Pest Control Perth | Family Run Since 1959 | Richill Pest Control" />
 <meta property="og:description" content="Three generations of Perth pest control since 1959. Termite specialists, low tox options, honest pricing." />
 <meta property="og:image" content="/og-image.jpg" />
 <link rel="icon" type="image/svg+xml" href="logo.svg" />
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Average+Sans&family=Rufina:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
 
-<!-- Tailwind, configured to match the base mockup -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 <script>
   tailwind.config = {
-    darkMode: "class",
     theme: {
       extend: {
         colors: {
@@ -33,47 +29,15 @@
           "dark-coffee": "#251605",
           "antique-white": "#FEEFDD",
           "light-coral": "#F8777B",
-          "surface": "#fff8f3",
-          "surface-bright": "#fff8f3",
-          "surface-dim": "#e6d8c6",
-          "surface-container": "#fbecda",
-          "surface-container-low": "#fff2e2",
-          "surface-container-highest": "#efe0cf",
-          "outline-variant": "#e8bcb7",
-          "on-surface": "#211a10",
-          "on-surface-variant": "#5e3f3b",
-        },
-        borderRadius: {
-          DEFAULT: "0.25rem",
-          lg: "0.5rem",
-          xl: "0.75rem",
-          full: "9999px",
-        },
-        spacing: {
-          "section-padding-mobile": "64px",
-          "gutter-desktop": "80px",
-          "stack-sm": "8px",
-          "section-padding-desktop": "120px",
-          "max-width": "1200px",
-          "stack-md": "16px",
-          "gutter-mobile": "24px",
-          "stack-lg": "24px",
+          "cream": "#FAEAD0",
+          "cream-soft": "#FDF4E2",
         },
         fontFamily: {
-          display: ["Rufina", "serif"],
-          body: ["Average Sans", "system-ui", "sans-serif"],
+          display: ["Rufina", "Georgia", "serif"],
+          body: ["'Average Sans'", "system-ui", "sans-serif"],
         },
-        fontSize: {
-          "headline-xl": ["48px", { lineHeight: "56px", fontWeight: "400" }],
-          "headline-xl-mobile": ["36px", { lineHeight: "42px", fontWeight: "400" }],
-          "headline-lg": ["36px", { lineHeight: "44px", fontWeight: "400" }],
-          "headline-md": ["28px", { lineHeight: "36px", fontWeight: "400" }],
-          "headline-sm": ["22px", { lineHeight: "28px", fontWeight: "400" }],
-          "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
-          "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
-          "pull-quote": ["24px", { lineHeight: "32px", fontWeight: "400" }],
-          "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.04em", fontWeight: "700" }],
-        },
+        maxWidth: { content: "1200px" },
+        borderRadius: { DEFAULT: "8px", lg: "8px", xl: "8px", "2xl": "8px" },
       },
     },
   };
@@ -86,126 +50,430 @@
     --dark-coffee: #251605;
     --antique-white: #FEEFDD;
     --light-coral: #F8777B;
-    --surface: #fff8f3;
+    --cream: #FAEAD0;
+    --cream-soft: #FDF4E2;
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   }
 
+  * { -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: 'Average Sans', system-ui, sans-serif;
-    color: #211a10;
-    background: var(--surface);
-    -webkit-font-smoothing: antialiased;
+    background: var(--antique-white);
+    color: var(--dark-coffee);
+    font-size: 17px;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
   }
   body.has-mobile-cta { padding-bottom: 64px; }
   @media (min-width: 768px) { body.has-mobile-cta { padding-bottom: 0; } }
 
-  h1, h2, h3, .display { font-family: 'Rufina', serif; font-weight: 400; }
+  h1, h2, h3, h4, .display { font-family: 'Rufina', Georgia, serif; font-weight: 400; }
 
-  .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    vertical-align: middle;
+  .h1 { font-size: 56px; line-height: 1.08; letter-spacing: -0.01em; }
+  .h2 { font-size: 40px; line-height: 1.15; letter-spacing: -0.005em; }
+  .h3 { font-size: 24px; line-height: 1.3; }
+  .pull { font-size: 28px; line-height: 1.4; font-style: italic; }
+  .small { font-size: 14px; line-height: 1.5; }
+  .micro { font-size: 12px; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
+
+  @media (max-width: 767px) {
+    .h1 { font-size: 36px; }
+    .h2 { font-size: 28px; }
+    .h3 { font-size: 22px; }
+    .pull { font-size: 22px; }
+    body { font-size: 16px; }
+    .small { font-size: 13px; }
   }
 
-  .btn-primary {
-    background-color: #EE1C20;
-    color: #FEEFDD;
-    font-family: 'Average Sans', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    border-radius: 8px;
-    transition: all 200ms ease-out;
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400; vertical-align: middle; }
+  .icon-fill { font-variation-settings: 'FILL' 1, 'wght' 500; }
+
+  /* ============== BUTTONS ============== */
+  .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-family: 'Average Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 200ms var(--ease-out-quart), box-shadow 200ms var(--ease-out-quart), background-color 200ms var(--ease-out-quart), color 200ms var(--ease-out-quart), border-color 200ms var(--ease-out-quart);
+    border: 1.5px solid transparent;
+  }
+  .btn-primary {
+    background: var(--racing-red);
+    color: var(--antique-white);
+    box-shadow: 0 4px 16px rgba(238, 28, 32, 0.18);
   }
   .btn-primary:hover {
-    background-color: #4E0110;
-    text-decoration: underline;
-    text-decoration-color: #F8777B;
-    text-underline-offset: 4px;
+    background: var(--night-bordeaux);
+    box-shadow: 0 6px 22px rgba(238, 28, 32, 0.32);
+    transform: translateY(-1px);
+  }
+  .btn-primary.glow {
+    animation: subtleGlow 4.8s ease-in-out infinite;
+  }
+  @keyframes subtleGlow {
+    0%, 100% { box-shadow: 0 4px 16px rgba(238, 28, 32, 0.18); }
+    50% { box-shadow: 0 6px 28px rgba(238, 28, 32, 0.36), 0 0 0 4px rgba(238, 28, 32, 0.06); }
+  }
+  .btn-outline-light {
+    background: transparent;
+    color: var(--antique-white);
+    border-color: rgba(254, 239, 221, 0.4);
+  }
+  .btn-outline-light:hover {
+    background: var(--antique-white);
+    color: var(--night-bordeaux);
+    border-color: var(--antique-white);
+  }
+  .btn-outline-dark {
+    background: transparent;
+    color: var(--racing-red);
+    border-color: var(--racing-red);
+  }
+  .btn-outline-dark:hover {
+    background: var(--racing-red);
+    color: var(--antique-white);
   }
 
-  .chapter-transition { position: relative; overflow: hidden; }
-  .chapter-transition::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 1px;
-    background: rgba(238, 28, 32, 0.1);
+  /* ============== PILLS ============== */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .pill-light { background: rgba(254, 239, 221, 0.12); color: var(--antique-white); border: 1px solid rgba(254, 239, 221, 0.18); }
+  .pill-red-soft { background: rgba(238, 28, 32, 0.08); color: var(--racing-red); border: 1px solid rgba(238, 28, 32, 0.15); }
+  .pill-suburb {
+    background: var(--antique-white);
+    color: var(--dark-coffee);
+    border: 1px solid rgba(78, 1, 16, 0.12);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    padding: 7px 14px;
+  }
+  .pill-suburb:hover { border-color: var(--racing-red); color: var(--night-bordeaux); }
+
+  /* ============== SECTION RHYTHM ============== */
+  .section { padding-top: 120px; padding-bottom: 120px; }
+  .section-tight { padding-top: 80px; padding-bottom: 80px; }
+  @media (max-width: 767px) {
+    .section { padding-top: 64px; padding-bottom: 64px; }
+    .section-tight { padding-top: 48px; padding-bottom: 48px; }
   }
 
-  /* Image placeholder (no external image dependency) */
-  .img-placeholder {
-    background:
-      radial-gradient(circle at 30% 30%, rgba(248, 119, 123, 0.25) 0%, transparent 55%),
-      radial-gradient(circle at 70% 70%, rgba(238, 28, 32, 0.18) 0%, transparent 55%),
-      linear-gradient(180deg, #4E0110 0%, #251605 100%);
+  /* ============== NAV ============== */
+  .top-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    transition: background 280ms var(--ease-out-quart), box-shadow 280ms var(--ease-out-quart);
+    background: transparent;
+  }
+  .top-nav.scrolled {
+    background: rgba(254, 239, 221, 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 1px 0 rgba(37, 22, 5, 0.06);
+  }
+  .nav-link { color: var(--antique-white); transition: color 200ms var(--ease-out-quart); position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -6px;
+    height: 1.5px; background: var(--racing-red);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 280ms var(--ease-out-quart);
+  }
+  .nav-link:hover::after { transform: scaleX(1); }
+  .top-nav.scrolled .nav-link { color: var(--dark-coffee); }
+  .nav-link:hover { color: var(--racing-red); }
+
+  /* ============== HERO ============== */
+  .hero-bg {
+    background: var(--night-bordeaux);
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(248, 119, 123, 0.10) 0%, transparent 40%),
+      radial-gradient(circle at 80% 100%, rgba(238, 28, 32, 0.06) 0%, transparent 50%),
+      linear-gradient(180deg, #4E0110 0%, #3A0210 60%, #2E0110 100%);
     position: relative;
     overflow: hidden;
   }
-  .img-placeholder-light {
-    background:
-      radial-gradient(circle at 50% 50%, rgba(254, 239, 221, 0.4) 0%, transparent 60%),
-      linear-gradient(135deg, #efe0cf 0%, #e6d8c6 100%);
-    color: rgba(37, 22, 5, 0.4);
+  #heroCanvas {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
   }
 
-  /* Skip link */
+  .hero-image-frame {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(248, 119, 123, 0.25) 0%, transparent 55%),
+      radial-gradient(circle at 70% 70%, rgba(238, 28, 32, 0.18) 0%, transparent 55%),
+      linear-gradient(160deg, #4E0110 0%, #251605 100%);
+    box-shadow: 0 24px 60px rgba(37, 22, 5, 0.4);
+  }
+
+  /* ============== CARDS ============== */
+  .card {
+    background: var(--antique-white);
+    border-radius: 8px;
+    transition: transform 240ms var(--ease-out-quart), box-shadow 240ms var(--ease-out-quart), border-color 240ms var(--ease-out-quart);
+    border: 1px solid rgba(78, 1, 16, 0.06);
+  }
+  .card:hover {
+    box-shadow: 0 12px 32px rgba(37, 22, 5, 0.08);
+    border-color: rgba(238, 28, 32, 0.2);
+  }
+  .card-dark {
+    background: rgba(78, 1, 16, 0.4);
+    border: 1px solid rgba(248, 119, 123, 0.15);
+    border-radius: 8px;
+    transition: transform 240ms var(--ease-out-quart), box-shadow 240ms var(--ease-out-quart), border-color 240ms var(--ease-out-quart);
+    backdrop-filter: blur(2px);
+  }
+  .card-dark:hover {
+    border-color: rgba(248, 119, 123, 0.4);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  }
+
+  .service-pillar {
+    background: var(--antique-white);
+    border-radius: 8px;
+    border: 1px solid rgba(78, 1, 16, 0.08);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 280ms var(--ease-out-quart), box-shadow 280ms var(--ease-out-quart), border-color 280ms var(--ease-out-quart);
+  }
+  .service-pillar:hover {
+    border-color: rgba(238, 28, 32, 0.25);
+    box-shadow: 0 16px 40px rgba(37, 22, 5, 0.08);
+  }
+  .service-pillar::before {
+    content: '';
+    position: absolute;
+    inset: -1px -1px auto auto;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle at top right, rgba(238, 28, 32, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .service-icon-circle {
+    width: 48px; height: 48px;
+    border-radius: 8px;
+    background: rgba(238, 28, 32, 0.08);
+    color: var(--racing-red);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    transition: background 240ms var(--ease-out-quart);
+  }
+  .service-pillar:hover .service-icon-circle { background: var(--racing-red); color: var(--antique-white); }
+  .service-icon-circle .material-symbols-outlined { font-size: 24px; }
+
+  /* ============== STORY ============== */
+  .story-bg {
+    background: var(--dark-coffee);
+    background-image:
+      radial-gradient(circle at 80% 0%, rgba(248, 119, 123, 0.05) 0%, transparent 40%);
+  }
+
+  /* ============== TERMITE SPECIALIST ============== */
+  .termite-bg {
+    background: var(--dark-coffee);
+    background-image:
+      radial-gradient(circle at 0% 0%, rgba(78, 1, 16, 0.6) 0%, transparent 60%),
+      radial-gradient(circle at 100% 100%, rgba(78, 1, 16, 0.4) 0%, transparent 50%);
+  }
+
+  /* ============== PEST SEASONS ============== */
+  .season-card {
+    background: var(--antique-white);
+    border-radius: 8px;
+    padding: 28px;
+    border: 1px solid rgba(78, 1, 16, 0.08);
+    transition: transform 280ms var(--ease-out-quart), box-shadow 280ms var(--ease-out-quart), border-color 280ms var(--ease-out-quart);
+  }
+  .season-card:hover {
+    border-color: rgba(238, 28, 32, 0.2);
+    box-shadow: 0 12px 32px rgba(37, 22, 5, 0.08);
+  }
+  .season-card .season-label {
+    font-family: 'Average Sans', sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--racing-red);
+  }
+
+  /* ============== COMMERCIAL ============== */
+  .vertical-tile {
+    background: rgba(254, 239, 221, 0.04);
+    border-radius: 8px;
+    padding: 20px 16px;
+    border: 1px solid rgba(254, 239, 221, 0.08);
+    text-align: center;
+    transition: background 240ms var(--ease-out-quart), border-color 240ms var(--ease-out-quart), transform 240ms var(--ease-out-quart);
+  }
+  .vertical-tile:hover {
+    background: rgba(254, 239, 221, 0.08);
+    border-color: rgba(248, 119, 123, 0.3);
+    transform: translateY(-2px);
+  }
+  .vertical-tile .material-symbols-outlined { color: var(--light-coral); font-size: 24px; display: block; margin: 0 auto 10px; }
+
+  /* ============== REVIEWS MARQUEE ============== */
+  .marquee {
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    will-change: transform;
+  }
+  .review-card {
+    background: var(--antique-white);
+    border-radius: 8px;
+    padding: 28px;
+    width: 360px;
+    flex-shrink: 0;
+    border: 1px solid rgba(248, 119, 123, 0.35);
+    display: flex; flex-direction: column;
+  }
+  @media (max-width: 640px) {
+    .review-card { width: 280px; padding: 22px; }
+  }
+
+  /* ============== FAQ ============== */
+  details.faq {
+    border-bottom: 1px solid rgba(37, 22, 5, 0.1);
+    overflow: hidden;
+  }
+  details.faq summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 24px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 24px;
+    transition: color 200ms var(--ease-out-quart);
+  }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary:hover { color: var(--racing-red); }
+  details.faq summary .plus-icon {
+    color: var(--racing-red); font-size: 28px;
+    transition: transform 300ms var(--ease-out-quart);
+    flex-shrink: 0;
+  }
+  details.faq[open] summary .plus-icon { transform: rotate(45deg); }
+  .faq-answer-wrap { overflow: hidden; height: 0; }
+  .faq-answer-inner { padding-bottom: 24px; max-width: 660px; }
+
+  /* ============== FORM ============== */
+  .field-label {
+    display: block;
+    font-family: 'Average Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--dark-coffee);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  .field-input, .field-select, .field-textarea {
+    width: 100%;
+    background: #fff;
+    color: var(--dark-coffee);
+    border: 1px solid rgba(37, 22, 5, 0.15);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'Average Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    transition: border-color 180ms var(--ease-out-quart), box-shadow 180ms var(--ease-out-quart);
+  }
+  .field-input:focus, .field-select:focus, .field-textarea:focus {
+    outline: none;
+    border-color: var(--racing-red);
+    box-shadow: 0 0 0 3px rgba(238, 28, 32, 0.12);
+  }
+  .field-textarea { resize: vertical; min-height: 92px; }
+
+  /* ============== REVEAL ============== */
+  .reveal { opacity: 0; transform: translateY(24px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+    .btn-primary.glow { animation: none; }
+    #heroCanvas { display: none; }
+    .marquee-track { animation: none; }
+  }
+
+  /* ============== SKIP LINK ============== */
   .skip-link {
     position: absolute; top: -100px; left: 16px; z-index: 100;
     background: var(--racing-red); color: var(--antique-white);
-    padding: 12px 20px; border-radius: 8px;
-    font-weight: 700; font-size: 14px; text-transform: uppercase;
+    padding: 10px 18px; border-radius: 8px;
+    font-weight: 700; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase;
   }
   .skip-link:focus { top: 16px; }
 
-  a:focus-visible, button:focus-visible, summary:focus-visible {
-    outline: 2px solid var(--racing-red); outline-offset: 3px; border-radius: 4px;
+  /* ============== FOCUS RING ============== */
+  a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--racing-red);
+    outline-offset: 3px;
+    border-radius: 8px;
   }
 
-  /* Service card hover lift */
-  .service-card { transition: box-shadow 200ms ease-out, transform 200ms ease-out; }
-  .service-card:hover { box-shadow: 0 6px 18px rgba(37, 22, 5, 0.08); }
-
-  /* Quick service tile (the 4 main categories) */
-  .quick-tile {
-    background: #fff;
-    border: 1px solid rgba(78, 1, 16, 0.1);
-    border-radius: 12px;
-    padding: 28px 20px;
-    display: flex; flex-direction: column; align-items: center; gap: 12px;
-    text-align: center;
-    transition: border-color 150ms ease-out, transform 150ms ease-out, box-shadow 200ms ease-out;
+  /* ============== MOBILE MENU ============== */
+  .mobile-menu {
+    transform: translateY(-100%);
+    transition: transform 320ms var(--ease-out-quart);
   }
-  .quick-tile:hover { border-color: var(--racing-red); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(37, 22, 5, 0.08); }
-  .quick-tile .material-symbols-outlined { font-size: 40px; color: var(--racing-red); }
-
-  /* Mobile menu */
-  .mobile-menu { transform: translateY(-100%); transition: transform 250ms ease-out; }
   .mobile-menu.open { transform: translateY(0); }
 
-  /* Reveal on scroll */
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 400ms ease-out, transform 400ms ease-out; }
-  .reveal.in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
-
-  /* Mobile floating CTA */
+  /* ============== MOBILE CTA ============== */
   .mobile-cta {
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
     height: 64px; display: grid; grid-template-columns: 1fr 1fr;
-    border-top: 1px solid rgba(248, 119, 123, 0.4);
+    box-shadow: 0 -2px 16px rgba(37, 22, 5, 0.18);
   }
-  .mobile-cta a { display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--antique-white); font-weight: 700; }
+  .mobile-cta a {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    color: var(--antique-white); font-weight: 700; font-size: 14px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
   .mobile-cta a:first-child { background: var(--racing-red); }
   .mobile-cta a:last-child { background: var(--night-bordeaux); }
   @media (min-width: 768px) { .mobile-cta { display: none; } }
 
-  details.faq summary::-webkit-details-marker { display: none; }
-  details.faq summary { list-style: none; cursor: pointer; }
+  /* ============== SUBURB GRID ============== */
+  .perth-map-bg {
+    background:
+      radial-gradient(circle at 50% 50%, rgba(238, 28, 32, 0.12) 0%, transparent 50%),
+      var(--night-bordeaux);
+  }
+
+  /* Helper visibility */
+  .hidden-init { visibility: hidden; }
 </style>
 
-<!-- LocalBusiness Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -235,453 +503,789 @@
 </script>
 </head>
 
-<body class="bg-surface font-body text-on-surface has-mobile-cta">
+<body class="has-mobile-cta">
 
 <a href="#main" class="skip-link">Skip to content</a>
 
-<!-- ========== TOP NAV ========== -->
-<nav class="bg-antique-white fixed top-0 w-full border-b border-outline-variant flex justify-between items-center px-gutter-mobile md:px-gutter-desktop h-20 z-50 transition-all duration-300 ease-in-out" id="topNav">
-  <a href="#home" class="flex items-center gap-3" aria-label="Richill Pest Control home">
-    <img src="logo.svg" alt="" class="h-12 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
-    <span style="display:none;" class="leading-none">
-      <span style="font-family:'Rufina',serif; font-style:italic; font-size:26px; color: var(--night-bordeaux);">Richill</span>
-      <span style="display:block; font-family:'Average Sans',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color: var(--dark-coffee);">Pest Control</span>
-    </span>
-    <span class="hidden sm:inline font-display text-headline-sm font-bold text-dark-coffee">Richill Pest Control</span>
-  </a>
+<!-- ========== NAV ========== -->
+<nav class="top-nav" id="topNav" aria-label="Primary">
+  <div class="max-w-content mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-3" aria-label="Richill Pest Control home">
+      <img src="logo.svg" alt="" class="h-10 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
+      <span style="display:none;" class="leading-none">
+        <span class="display italic" style="font-size:24px; color: var(--antique-white);">Richill</span>
+        <span class="micro block" style="color: var(--antique-white); opacity: 0.85;">Pest Control</span>
+      </span>
+    </a>
 
-  <div class="hidden md:flex gap-8">
-    <a href="#services" class="font-display text-headline-sm text-dark-coffee hover:text-racing-red transition-colors">Services</a>
-    <a href="#story" class="font-display text-headline-sm text-dark-coffee hover:text-racing-red transition-colors">Our story</a>
-    <a href="#reviews" class="font-display text-headline-sm text-dark-coffee hover:text-racing-red transition-colors">Reviews</a>
-    <a href="#faqs" class="font-display text-headline-sm text-dark-coffee hover:text-racing-red transition-colors">FAQ</a>
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="#story" class="nav-link text-[15px]">Story</a>
+      <a href="#services" class="nav-link text-[15px]">Services</a>
+      <a href="#termite" class="nav-link text-[15px]">Termites</a>
+      <a href="#commercial" class="nav-link text-[15px]">Commercial</a>
+      <a href="#reviews" class="nav-link text-[15px]">Reviews</a>
+      <a href="#faqs" class="nav-link text-[15px]">FAQs</a>
+    </div>
+
+    <div class="hidden md:flex items-center gap-4">
+      <a href="tel:0426427299" class="nav-link hidden xl:inline-flex items-center gap-2 text-[14px] font-bold">
+        <span class="material-symbols-outlined" style="font-size: 18px;">call</span>
+        0426 427 299
+      </a>
+      <a href="#quote" class="btn btn-primary">Get a quote</a>
+    </div>
+
+    <button class="md:hidden p-2 -mr-2" aria-label="Open menu" aria-expanded="false" id="mobileMenuBtn" style="color: var(--antique-white);">
+      <span class="material-symbols-outlined" style="font-size: 32px;">menu</span>
+    </button>
   </div>
 
-  <a href="#quote" class="hidden md:inline-flex px-6 py-3 btn-primary">Get a quote</a>
-
-  <button class="md:hidden text-dark-coffee" aria-label="Open menu" aria-expanded="false" id="mobileMenuBtn">
-    <span class="material-symbols-outlined text-4xl">menu</span>
-  </button>
-
-  <!-- Mobile menu panel -->
-  <div class="mobile-menu md:hidden bg-antique-white absolute top-full left-0 right-0 border-b border-outline-variant" id="mobileMenu">
-    <div class="px-gutter-mobile py-6 flex flex-col gap-3">
-      <a href="tel:0426427299" class="flex items-center gap-2 text-lg font-bold text-dark-coffee border-b border-outline-variant pb-3">
+  <div class="mobile-menu md:hidden absolute top-full left-0 right-0" id="mobileMenu" style="background: var(--antique-white); border-bottom: 1px solid rgba(78, 1, 16, 0.1);">
+    <div class="px-6 py-6 flex flex-col gap-2">
+      <a href="tel:0426427299" class="flex items-center gap-3 text-lg font-bold border-b pb-3 mb-2" style="color: var(--dark-coffee); border-color: rgba(78, 1, 16, 0.1);">
         <span class="material-symbols-outlined">call</span> 0426 427 299
       </a>
-      <a href="#services" class="py-2 text-dark-coffee">Services</a>
-      <a href="#story" class="py-2 text-dark-coffee">Our story</a>
-      <a href="#reviews" class="py-2 text-dark-coffee">Reviews</a>
-      <a href="#faqs" class="py-2 text-dark-coffee">FAQ</a>
-      <a href="#quote" class="px-6 py-3 btn-primary mt-2">Get a quote</a>
+      <a href="#story" class="py-2" style="color: var(--dark-coffee);">Story</a>
+      <a href="#services" class="py-2" style="color: var(--dark-coffee);">Services</a>
+      <a href="#termite" class="py-2" style="color: var(--dark-coffee);">Termite specialists</a>
+      <a href="#commercial" class="py-2" style="color: var(--dark-coffee);">Commercial</a>
+      <a href="#reviews" class="py-2" style="color: var(--dark-coffee);">Reviews</a>
+      <a href="#faqs" class="py-2" style="color: var(--dark-coffee);">FAQs</a>
+      <a href="#quote" class="btn btn-primary mt-3">Get a quote</a>
     </div>
   </div>
 </nav>
 
-<main class="pt-20" id="main">
+<main id="main">
 
-  <!-- ========== HERO ========== -->
-  <section class="bg-night-bordeaux py-section-padding-mobile md:py-section-padding-desktop" id="home">
-    <div class="max-w-max-width mx-auto px-gutter-mobile md:px-gutter-desktop grid md:grid-cols-2 gap-12 items-center">
-      <div class="text-antique-white space-y-stack-lg reveal">
-        <h1 class="font-display text-headline-xl-mobile md:text-headline-xl">Three generations of Perth pest control. One quick call to fix it.</h1>
-        <p class="font-body text-body-lg opacity-90">A family business since 1959. Same family. Same standards. Safer treatments, honest answers, and a bloke at your door who treats your home like his own.</p>
-        <div class="flex flex-col sm:flex-row gap-4 pt-4">
-          <a href="tel:0426427299" class="px-8 py-4 btn-primary">
-            <span class="material-symbols-outlined" style="font-size:20px;">call</span>
-            Call Mike now
+  <!-- ============================ HERO ============================ -->
+  <section id="home" class="hero-bg">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="relative max-w-content mx-auto px-6 lg:px-12 pt-32 lg:pt-40 pb-20 lg:pb-32 grid md:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <div class="md:col-span-7 space-y-7 hidden-init" data-hero-copy>
+        <span class="pill pill-light" data-hero-anim>
+          <span class="material-symbols-outlined" style="font-size: 14px; color: var(--light-coral);">history</span>
+          Family run in Perth since 1959
+        </span>
+        <h1 class="h1 display" style="color: var(--antique-white);" data-hero-anim>Three generations of Perth pest control. One quick call to fix it.</h1>
+        <p class="text-base md:text-lg max-w-xl" style="color: rgba(254, 239, 221, 0.78);" data-hero-anim>
+          Same family. Same standards. Safer treatments, honest answers, and a bloke at your door who treats your home like his own.
+        </p>
+        <div class="flex flex-wrap gap-3 pt-2" data-hero-anim>
+          <a href="#quote" class="btn btn-primary glow">Get a free quote</a>
+          <a href="tel:0426427299" class="btn btn-outline-light">
+            <span class="material-symbols-outlined" style="font-size: 18px;">call</span>
+            Call or text Mike
           </a>
-          <a href="#quote" class="px-8 py-4 border-2 border-racing-red text-racing-red font-bold rounded-lg hover:bg-racing-red hover:text-antique-white transition-all text-center inline-flex items-center justify-center gap-2" style="text-transform:uppercase; letter-spacing:0.04em; line-height:1;">
-            Request a quote
-          </a>
+        </div>
+        <div class="flex flex-wrap gap-2 pt-4" data-hero-anim>
+          <span class="pill pill-light">Termite specialists</span>
+          <span class="pill pill-light">Low tox options</span>
+          <span class="pill pill-light">
+            <span class="material-symbols-outlined icon-fill" style="font-size: 12px; color: var(--racing-red);">star</span>
+            5.0 on Google
+          </span>
+          <span class="pill pill-light">7 days, 7am to 6pm</span>
         </div>
       </div>
-      <div class="relative reveal">
-        <div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl img-placeholder flex items-center justify-center">
-          <!-- REPLACE: hero photo of Mike on a Perth job, ute visible, warm afternoon light -->
-          <div class="text-antique-white/40 text-center px-6">
-            <span class="material-symbols-outlined" style="font-size:48px;">image</span>
-            <p class="text-sm mt-2 max-w-[220px] mx-auto">Photo placeholder: Mike on a Perth job, ute visible, warm afternoon light.</p>
+
+      <div class="md:col-span-5 hidden-init" data-hero-img>
+        <div class="hero-image-frame aspect-[4/5] flex items-center justify-center">
+          <div class="text-center px-6" style="color: rgba(254, 239, 221, 0.4);">
+            <span class="material-symbols-outlined" style="font-size: 48px;">image</span>
+            <p class="small mt-2 max-w-[200px] mx-auto">Photo placeholder: Mike on a Perth job, ute visible, warm afternoon light.</p>
           </div>
-        </div>
-        <div class="absolute -bottom-6 -left-6 bg-racing-red text-antique-white p-6 rounded-lg hidden lg:block max-w-[260px]">
-          <p class="font-display text-headline-sm italic leading-snug">"Protecting Perth homes since 1959."</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== TRUST STRIP (small, original style) ========== -->
-  <div class="bg-surface-container-highest py-8 border-y border-outline-variant">
-    <div class="max-w-max-width mx-auto px-gutter-mobile md:px-gutter-desktop flex flex-wrap justify-around items-center gap-8 opacity-80">
-      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-racing-red">verified</span> <span class="font-bold">Fully licensed &amp; insured</span></div>
-      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-racing-red">home_repair_service</span> <span class="font-bold">3rd generation expertise</span></div>
-      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-racing-red">history</span> <span class="font-bold">Serving Perth since 1959</span></div>
-      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-racing-red">eco</span> <span class="font-bold">Low tox options</span></div>
+  <!-- ============================ TRUST STRIP ============================ -->
+  <div style="background: var(--cream); border-top: 1px solid rgba(78, 1, 16, 0.06); border-bottom: 1px solid rgba(78, 1, 16, 0.06);">
+    <div class="max-w-content mx-auto px-6 lg:px-12 py-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="flex items-center gap-3 reveal">
+        <span class="material-symbols-outlined" style="font-size: 26px; color: var(--racing-red);">verified</span>
+        <div class="leading-tight">
+          <div class="font-bold text-sm" style="color: var(--dark-coffee);">Fully licensed</div>
+          <div class="small" style="color: rgba(37, 22, 5, 0.65);">WA Health Pest Management</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 reveal">
+        <span class="material-symbols-outlined" style="font-size: 26px; color: var(--racing-red);">shield</span>
+        <div class="leading-tight">
+          <div class="font-bold text-sm" style="color: var(--dark-coffee);">Public liability</div>
+          <div class="small" style="color: rgba(37, 22, 5, 0.65);">$20m cover, every job</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 reveal">
+        <span class="material-symbols-outlined" style="font-size: 26px; color: var(--racing-red);">eco</span>
+        <div class="leading-tight">
+          <div class="font-bold text-sm" style="color: var(--dark-coffee);">APVMA approved</div>
+          <div class="small" style="color: rgba(37, 22, 5, 0.65);">Low tox where it suits</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 reveal">
+        <span class="material-symbols-outlined" style="font-size: 26px; color: var(--racing-red);">description</span>
+        <div class="leading-tight">
+          <div class="font-bold text-sm" style="color: var(--dark-coffee);">AS 3660.2 reports</div>
+          <div class="small" style="color: rgba(37, 22, 5, 0.65);">Bank and agent accepted</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ========== OUR STORY ========== -->
-  <section class="bg-dark-coffee py-section-padding-mobile md:py-section-padding-desktop chapter-transition" id="story">
-    <div class="max-w-max-width mx-auto px-gutter-mobile md:px-gutter-desktop">
-      <div class="grid md:grid-cols-2 gap-16 items-start">
-        <div class="space-y-stack-lg order-2 md:order-1 reveal">
-          <h2 class="font-display text-headline-lg text-antique-white">A family business that started before the suburb did.</h2>
-          <div class="font-body text-body-lg text-antique-white opacity-90 space-y-4">
-            <p>In 1959, my grandfather started knocking on Perth doors with a tank on his back and a list of customers his mates passed on. Sixty-seven years later, the same family is still doing the same work, just with better gear and a team behind us.</p>
-            <p>I'm Mike. My dad took it on from his dad, and now I run the day to day with a handful of techs who know Perth properties inside out. Same standards. Same answer when you ring. Same job done properly the first time.</p>
-          </div>
-          <blockquote class="border-l-4 border-racing-red pl-6 py-2">
-            <p class="font-display text-pull-quote text-light-coral italic">"I treat my customers' home and family as if it were my own."</p>
-            <cite class="block mt-2 font-body text-label-md text-antique-white not-italic">Mike, owner</cite>
-          </blockquote>
+  <!-- ============================ STORY ============================ -->
+  <section id="story" class="story-bg section">
+    <div class="max-w-content mx-auto px-6 lg:px-12 grid md:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="md:col-span-7 space-y-6">
+        <span class="pill pill-light reveal">Our story</span>
+        <h2 class="h2 display reveal" style="color: var(--antique-white);">A family business that started before the suburb did.</h2>
+        <div class="space-y-5 text-base md:text-lg max-w-xl" style="color: rgba(254, 239, 221, 0.82);">
+          <p class="reveal">In 1959, my grandfather started knocking on Perth doors with a tank on his back and a list of customers his mates passed on. Sixty-seven years later, the same family is still doing the same work, just with better gear and a team behind us.</p>
+          <p class="reveal">I'm Mike. My dad took it on from his dad, and now I run the day to day with a handful of techs who know Perth properties inside out. Same standards. Same answer when you ring. Same job done properly the first time.</p>
         </div>
-        <div class="order-1 md:order-2 grid grid-cols-2 gap-4 reveal">
-          <div class="space-y-4">
-            <div class="img-placeholder rounded-lg h-64 w-full flex items-center justify-center">
-              <span class="material-symbols-outlined text-antique-white/40" style="font-size:40px;">photo_camera</span>
-            </div>
-            <div class="img-placeholder rounded-lg h-48 w-full flex items-center justify-center">
-              <span class="material-symbols-outlined text-antique-white/40" style="font-size:36px;">handyman</span>
-            </div>
+      </div>
+
+      <aside class="md:col-span-5 reveal">
+        <div class="card-dark p-8">
+          <span class="material-symbols-outlined" style="font-size: 32px; color: var(--light-coral);">format_quote</span>
+          <p class="pull mt-3" style="color: var(--light-coral);">"I treat my customers' home and family as if it were my own."</p>
+          <p class="micro mt-4" style="color: rgba(254, 239, 221, 0.7);">Mike, owner</p>
+        </div>
+        <div class="grid grid-cols-3 gap-3 mt-6">
+          <div class="card-dark p-5 text-center">
+            <div class="display text-3xl" style="color: var(--racing-red);">67</div>
+            <div class="micro mt-2" style="color: rgba(254, 239, 221, 0.7); font-size: 10px;">Years in Perth</div>
           </div>
-          <div class="pt-12">
-            <div class="img-placeholder rounded-lg h-96 w-full flex items-center justify-center">
-              <span class="material-symbols-outlined text-antique-white/40" style="font-size:48px;">home</span>
-            </div>
+          <div class="card-dark p-5 text-center">
+            <div class="display text-3xl" style="color: var(--racing-red);">3</div>
+            <div class="micro mt-2" style="color: rgba(254, 239, 221, 0.7); font-size: 10px;">Generations</div>
           </div>
+          <div class="card-dark p-5 text-center">
+            <div class="display text-3xl" style="color: var(--racing-red);">5.0</div>
+            <div class="micro mt-2" style="color: rgba(254, 239, 221, 0.7); font-size: 10px;">Google stars</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============================ SERVICES (TIGHTENED) ============================ -->
+  <section id="services" class="section" style="background: var(--antique-white);">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <div class="text-center max-w-2xl mx-auto mb-14 space-y-4">
+        <span class="pill pill-red-soft reveal">What we treat</span>
+        <h2 class="h2 display reveal" style="color: var(--night-bordeaux);">Four jobs we do better than anyone in Perth.</h2>
+        <p class="text-base md:text-lg reveal" style="color: rgba(37, 22, 5, 0.75);">Termite work is our speciality. Domestic pest control is the everyday. Both done with prevention in mind, and with low tox options wherever they suit the job.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 lg:gap-6">
+        <article class="service-pillar reveal">
+          <div class="service-icon-circle"><span class="material-symbols-outlined">policy</span></div>
+          <div class="flex items-center gap-3 mb-3">
+            <h3 class="h3 display" style="color: var(--night-bordeaux);">Termite inspections &amp; treatment</h3>
+            <span class="pill pill-red-soft" style="font-size: 10px;">Speciality</span>
+          </div>
+          <p style="color: rgba(37, 22, 5, 0.78);">Full inspection with thermal imaging and moisture readings, a written report you can take to a bank or an agent, and a treatment plan that fits your house, not a template. AS 3660.2 standard.</p>
+          <a href="#termite" class="inline-flex items-center gap-1 mt-4 text-sm font-bold" style="color: var(--racing-red);">
+            See how we do it <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+          </a>
+        </article>
+
+        <article class="service-pillar reveal">
+          <div class="service-icon-circle"><span class="material-symbols-outlined">pest_control</span></div>
+          <h3 class="h3 display mb-3" style="color: var(--night-bordeaux);">General pest control</h3>
+          <p style="color: rgba(37, 22, 5, 0.78);">The seasonal all-rounder. Inside and outside treatment that knocks back ants, cockroaches, spiders, silverfish and the usual Perth offenders. Most homes book this once or twice a year.</p>
+        </article>
+
+        <article class="service-pillar reveal">
+          <div class="service-icon-circle"><span class="material-symbols-outlined">eco</span></div>
+          <h3 class="h3 display mb-3" style="color: var(--night-bordeaux);">Low tox &amp; chemical free options</h3>
+          <p style="color: rgba(37, 22, 5, 0.78);">Where the job allows it, we use baiting, exclusion work, and reduced-chemical treatments. Great for homes with little kids, pets, or native lizards in the yard.</p>
+        </article>
+
+        <article class="service-pillar reveal">
+          <div class="service-icon-circle"><span class="material-symbols-outlined">home_work</span></div>
+          <h3 class="h3 display mb-3" style="color: var(--night-bordeaux);">Pre purchase termite inspection</h3>
+          <p style="color: rgba(37, 22, 5, 0.78);">Buying a place? We inspect before settlement, write a report that meets the standard, and walk you through the risks in plain English. Worth doing on every Perth purchase.</p>
+        </article>
+      </div>
+
+      <!-- "We also handle" compact chip list -->
+      <div class="mt-12 max-w-3xl mx-auto text-center reveal">
+        <p class="micro mb-4" style="color: rgba(37, 22, 5, 0.55);">We also handle</p>
+        <div class="flex flex-wrap justify-center gap-2">
+          <span class="pill-suburb pill">Rats &amp; mice</span>
+          <span class="pill-suburb pill">Cockroaches</span>
+          <span class="pill-suburb pill">Ants</span>
+          <span class="pill-suburb pill">Spiders</span>
+          <span class="pill-suburb pill">Bed bugs</span>
+          <span class="pill-suburb pill">Fleas</span>
+          <span class="pill-suburb pill">Wasps &amp; bees</span>
+          <span class="pill-suburb pill">End of lease</span>
+        </div>
+        <p class="small italic mt-6" style="color: rgba(37, 22, 5, 0.65);">
+          Not sure what you've got? Send a photo to
+          <a href="sms:0426427299" style="color: var(--racing-red);" class="font-bold underline decoration-1 underline-offset-2">0426 427 299</a>
+          and we'll tell you what it is.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ TERMITE SPECIALIST ============================ -->
+  <section id="termite" class="termite-bg section">
+    <div class="max-w-content mx-auto px-6 lg:px-12 grid md:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="md:col-span-5 space-y-6">
+        <span class="pill pill-light reveal">Termite specialists</span>
+        <h2 class="h2 display reveal" style="color: var(--antique-white);">The white ant work, done properly.</h2>
+        <div class="space-y-4 text-base md:text-lg" style="color: rgba(254, 239, 221, 0.82);">
+          <p class="reveal">Termite inspections are the heart of the business. Not a tick-box upsell after a general spray. We take the time it takes, we use the gear that actually finds them, and we write reports a bank or an agent will accept.</p>
+          <p class="reveal">In Perth's sandy ground and double-brick housing, you can't eyeball a termite job. You need to see behind the walls.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 pt-2 reveal">
+          <span class="pill pill-light">AS 3660.2 reports</span>
+          <span class="pill pill-light">Thermal imaging</span>
+          <span class="pill pill-light">Moisture mapping</span>
+          <span class="pill pill-light">Termatrac radar</span>
+        </div>
+      </div>
+
+      <div class="md:col-span-7 grid sm:grid-cols-2 gap-4">
+        <div class="card-dark p-6 reveal">
+          <span class="material-symbols-outlined" style="font-size: 28px; color: var(--racing-red);">thermostat</span>
+          <h4 class="display text-xl mt-3 mb-2" style="color: var(--antique-white);">Thermal imaging</h4>
+          <p class="small" style="color: rgba(254, 239, 221, 0.78);">Termites generate heat where they nest. The thermal camera shows it through the wall, no drilling, no guesswork.</p>
+        </div>
+        <div class="card-dark p-6 reveal">
+          <span class="material-symbols-outlined" style="font-size: 28px; color: var(--racing-red);">water_drop</span>
+          <h4 class="display text-xl mt-3 mb-2" style="color: var(--antique-white);">Moisture meters</h4>
+          <p class="small" style="color: rgba(254, 239, 221, 0.78);">Termites need moisture. We map the wet spots so we know where they are heading, not just where they have been.</p>
+        </div>
+        <div class="card-dark p-6 reveal">
+          <span class="material-symbols-outlined" style="font-size: 28px; color: var(--racing-red);">radar</span>
+          <h4 class="display text-xl mt-3 mb-2" style="color: var(--antique-white);">Termatrac radar</h4>
+          <p class="small" style="color: rgba(254, 239, 221, 0.78);">Microwave radar detects movement inside the timber. Confirms activity without opening up the wall.</p>
+        </div>
+        <div class="card-dark p-6 reveal">
+          <span class="material-symbols-outlined" style="font-size: 28px; color: var(--racing-red);">videocam</span>
+          <h4 class="display text-xl mt-3 mb-2" style="color: var(--antique-white);">Borescope camera</h4>
+          <p class="small" style="color: rgba(254, 239, 221, 0.78);">Tiny camera on a flexible cable for tight spots like roof voids, sub-floors, and skirting cavities.</p>
+        </div>
+
+        <div class="card-dark p-6 sm:col-span-2 reveal">
+          <h4 class="display text-xl mb-4" style="color: var(--light-coral);">Treatment plans we use</h4>
+          <ul class="space-y-3 text-sm" style="color: rgba(254, 239, 221, 0.86);">
+            <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">shield</span><div><strong style="color: var(--antique-white);">Chemical termite barriers.</strong> Trenched and treated around the perimeter using APVMA approved transfer products. 8 year warranty options.</div></li>
+            <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">construction</span><div><strong style="color: var(--antique-white);">Physical barriers.</strong> Installed during construction or renovation. Termimesh, granite particle, the lot.</div></li>
+            <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">my_location</span><div><strong style="color: var(--antique-white);">Baiting systems.</strong> In-ground stations around the property. Sentricon, Exterra, Nemesis depending on what suits the site.</div></li>
+            <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">healing</span><div><strong style="color: var(--antique-white);">Active colony treatment.</strong> Direct foam or dust into the live workings before we move to a barrier or bait plan.</div></li>
+            <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">event_repeat</span><div><strong style="color: var(--antique-white);">Annual monitoring.</strong> Yearly inspection on the book, so anything new gets caught early.</div></li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== SERVICES (the only expanded section) ========== -->
-  <section class="bg-antique-white py-section-padding-mobile md:py-section-padding-desktop" id="services">
-    <div class="max-w-max-width mx-auto px-gutter-mobile md:px-gutter-desktop">
-
-      <div class="text-center mb-12 md:mb-16 space-y-4 reveal">
-        <h2 class="font-display text-headline-lg text-dark-coffee">What we treat</h2>
-        <p class="max-w-2xl mx-auto font-body text-body-lg opacity-85">Termite inspections are our speciality. Domestic pest control is the everyday work. Both done with prevention in mind, and with low tox or chemical free options wherever they suit the job.</p>
+  <!-- ============================ PEST SEASONS ============================ -->
+  <section class="section" style="background: var(--cream-soft);">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <div class="text-center max-w-2xl mx-auto mb-14 space-y-4">
+        <span class="pill pill-red-soft reveal">Perth pest calendar</span>
+        <h2 class="h2 display reveal" style="color: var(--night-bordeaux);">When to book what.</h2>
+        <p class="text-base md:text-lg reveal" style="color: rgba(37, 22, 5, 0.75);">Perth has its own rhythm. A rough guide to what shows up when, so you can book ahead instead of chase.</p>
       </div>
 
-      <!-- Quick-pick row: 4 main categories -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 md:mb-16">
-        <a href="#service-termite" class="quick-tile reveal">
-          <span class="material-symbols-outlined">policy</span>
-          <h3 class="font-display text-headline-sm text-dark-coffee leading-tight">Termite specialists</h3>
-          <p class="text-sm opacity-75">Thermal imaging, AS 3660.2 reports.</p>
-        </a>
-        <a href="#service-general" class="quick-tile reveal">
-          <span class="material-symbols-outlined">pest_control</span>
-          <h3 class="font-display text-headline-sm text-dark-coffee leading-tight">General pest control</h3>
-          <p class="text-sm opacity-75">The seasonal all-rounder, inside and out.</p>
-        </a>
-        <a href="#service-lowtox" class="quick-tile reveal">
-          <span class="material-symbols-outlined">eco</span>
-          <h3 class="font-display text-headline-sm text-dark-coffee leading-tight">Low tox &amp; chemical free</h3>
-          <p class="text-sm opacity-75">Safer for kids, pets, native wildlife.</p>
-        </a>
-        <a href="tel:0426427299" class="quick-tile reveal" style="background: var(--racing-red); border-color: var(--racing-red);">
-          <span class="material-symbols-outlined" style="color: var(--antique-white);">emergency</span>
-          <h3 class="font-display text-headline-sm leading-tight" style="color: var(--antique-white);">Urgent callout</h3>
-          <p class="text-sm" style="color: rgba(254, 239, 221, 0.9);">Ring Mike, often same day.</p>
-        </a>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+        <div class="season-card reveal">
+          <div class="flex items-baseline justify-between mb-3">
+            <h3 class="h3 display" style="color: var(--night-bordeaux);">Spring</h3>
+            <span class="season-label">Sep to Nov</span>
+          </div>
+          <p class="text-sm mb-4" style="color: rgba(37, 22, 5, 0.7);">Everything wakes up. The big one for prevention work.</p>
+          <ul class="text-sm space-y-1.5" style="color: rgba(37, 22, 5, 0.82);">
+            <li>Termites swarming</li>
+            <li>Ants on the march</li>
+            <li>European wasps build nests</li>
+            <li>Annual termite inspection ideal</li>
+          </ul>
+        </div>
+        <div class="season-card reveal">
+          <div class="flex items-baseline justify-between mb-3">
+            <h3 class="h3 display" style="color: var(--night-bordeaux);">Summer</h3>
+            <span class="season-label">Dec to Feb</span>
+          </div>
+          <p class="text-sm mb-4" style="color: rgba(37, 22, 5, 0.7);">Hot, dry, and busy. The peak season.</p>
+          <ul class="text-sm space-y-1.5" style="color: rgba(37, 22, 5, 0.82);">
+            <li>Flies, mozzies, midges</li>
+            <li>Redback &amp; whitetail spiders</li>
+            <li>Cockroaches at their worst</li>
+            <li>Snake season (refer licensed catcher)</li>
+          </ul>
+        </div>
+        <div class="season-card reveal">
+          <div class="flex items-baseline justify-between mb-3">
+            <h3 class="h3 display" style="color: var(--night-bordeaux);">Autumn</h3>
+            <span class="season-label">Mar to May</span>
+          </div>
+          <p class="text-sm mb-4" style="color: rgba(37, 22, 5, 0.7);">They move inside. Best time for indoor work.</p>
+          <ul class="text-sm space-y-1.5" style="color: rgba(37, 22, 5, 0.82);">
+            <li>Portuguese millipedes invade</li>
+            <li>Rats &amp; mice come inside</li>
+            <li>Silverfish in bookshelves</li>
+            <li>Carpet beetles &amp; clothes moths</li>
+          </ul>
+        </div>
+        <div class="season-card reveal">
+          <div class="flex items-baseline justify-between mb-3">
+            <h3 class="h3 display" style="color: var(--night-bordeaux);">Winter</h3>
+            <span class="season-label">Jun to Aug</span>
+          </div>
+          <p class="text-sm mb-4" style="color: rgba(37, 22, 5, 0.7);">Quieter outside, but rodents and termites don't sleep.</p>
+          <ul class="text-sm space-y-1.5" style="color: rgba(37, 22, 5, 0.82);">
+            <li>Roof rat &amp; mice peak</li>
+            <li>Subterranean termites active</li>
+            <li>Pre-purchase inspections</li>
+            <li>Bird proofing before nesting</li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Full service grid (12 detailed cards) -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-
-        <article id="service-termite" class="service-card bg-surface-container-low p-8 rounded-xl border-2 border-racing-red">
-          <div class="w-12 h-12 bg-racing-red text-antique-white rounded-full flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">policy</span>
-          </div>
-          <span class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider text-racing-red bg-racing-red/10 rounded-full mb-3">Our speciality</span>
-          <h3 class="font-display text-headline-sm text-dark-coffee mb-3">Termite inspections and treatment</h3>
-          <p class="font-body text-body-md text-on-surface-variant">Full inspection with thermal imaging and moisture readings, written report you can take to a bank or an agent, and a treatment plan that fits your house, not a template. We do AS 3660.2 standard reports.</p>
-        </article>
-
-        <article id="service-general" class="service-card bg-surface-container-low p-8 rounded-xl border border-light-coral">
-          <div class="w-12 h-12 bg-racing-red text-antique-white rounded-full flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">pest_control</span>
-          </div>
-          <h3 class="font-display text-headline-sm text-dark-coffee mb-3">General pest control</h3>
-          <p class="font-body text-body-md text-on-surface-variant">The seasonal all-rounder. Inside and outside treatment that knocks back ants, cockroaches, spiders, silverfish and the usual Perth offenders. Most homes book this once or twice a year.</p>
-        </article>
-
-        <article id="service-lowtox" class="service-card bg-surface-container-low p-8 rounded-xl border border-light-coral">
-          <div class="w-12 h-12 bg-racing-red text-antique-white rounded-full flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">eco</span>
-          </div>
-          <h3 class="font-display text-headline-sm text-dark-coffee mb-3">Low tox &amp; chemical free options</h3>
-          <p class="font-body text-body-md text-on-surface-variant">Where the job allows, we use baiting, exclusion work, and reduced-chemical treatments. Great for homes with little kids, pets, native lizards in the yard, or anyone who just prefers less chemistry.</p>
-        </article>
-
-        <article class="service-card bg-surface-container-low p-8 rounded-xl border border-light-coral">
-          <div class="w-12 h-12 bg-racing-red text-antique-white rounded-full flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">home_work</span>
-          </div>
-          <h3 class="font-display text-headline-sm text-dark-coffee mb-3">Pre purchase termite inspection</h3>
-          <p class="font-body text-body-md text-on-surface-variant">Buying a place? We inspect before settlement, write a report that meets the standard, and walk you through the risks in plain English. Worth doing on every Perth purchase, not just the suspect ones.</p>
-        </article>
-
-        <article class="service-card bg-surface-container-low p-8 rounded-xl border border-light-coral">
-          <div class="w-12 h-12 bg-racing-red text-antique-white rounded-full flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">pets</span>
-          </div>
-          <h3 class="font-display text-headline-sm text-dark-coffee mb-3">Rats and mice</h3>
-          <p class="font-body text-body-md text-on-surface-variant">Bait stations placed where they should be, entry points blocked, and a return visit to make sure they're gone. We're careful about bait placement near native wildlife.</p>
-        </article>
-
-        <article class="service-card bg-surface-container-low p-8 rounded-xl border border-light-coral">
-          <div class="w-12 h-12 bg-racing-red text-antique-white rounded-full flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">bug_report</span>
-          </div>
-          <h3 class="font-display text-headline-sm text-dark-coffee mb-3">Cockroaches</h3>
-          <p class="font-body text-body-md text-on-surface-variant">German cockroaches in the kitchen need a different plan to the big bush ones outside, so we treat to species. Gel baits inside, residual on the perimeter, and a chat about what's drawing them in.</p>
-        </article>
-
-        <article class="service-card bg-surface-container-low p-8 rounded-xl border border-light-coral">
-          <div class="w-12 h-12 bg-racing-red text-antique-white rounded-full flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">linear_scale</span>
-          </div>
-          <h3 class="font-display text-headline-sm text-dark-coffee mb-3">Ants</h3>
-          <p class="font-body text-body-md text-on-surface-variant">Find the nest, treat the trail, seal the entry. If it's white ants it's not really an ant, see termite inspections above.</p>
-        </article>
-
-        <article class="service-card bg-surface-container-low p-8 rounded-xl border border-light-coral">
-          <div class="w-12 h-12 bg-racing-red text-antique-white rounded-full flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">grid_3x3</span>
-          </div>
-          <h3 class="font-display text-headline-sm text-dark-coffee mb-3">Spiders</h3>
-          <p class="font-body text-body-md text-on-surface-variant">Web sweep, residual on eaves and skirting, and an extra look around kids play areas. Redbacks and whitetails get the close attention they deserve.</p>
-        </article>
-
-        <article class="service-card bg-surface-container-low p-8 rounded-xl border border-light-coral">
-          <div class="w-12 h-12 bg-racing-red text-antique-white rounded-full flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">bed</span>
-          </div>
-          <h3 class="font-display text-headline-sm text-dark-coffee mb-3">Bed bugs</h3>
-          <p class="font-body text-body-md text-on-surface-variant">Mattress, frame, skirting, the lot. Bed bugs are the one job you can't half do, so we book the time it actually takes.</p>
-        </article>
-
-        <article class="service-card bg-surface-container-low p-8 rounded-xl border border-light-coral">
-          <div class="w-12 h-12 bg-racing-red text-antique-white rounded-full flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">cruelty_free</span>
-          </div>
-          <h3 class="font-display text-headline-sm text-dark-coffee mb-3">Fleas</h3>
-          <p class="font-body text-body-md text-on-surface-variant">Inside, outside, and a chat about the pets. Usually two visits to break the breeding cycle.</p>
-        </article>
-
-        <article class="service-card bg-surface-container-low p-8 rounded-xl border border-light-coral">
-          <div class="w-12 h-12 bg-racing-red text-antique-white rounded-full flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">hive</span>
-          </div>
-          <h3 class="font-display text-headline-sm text-dark-coffee mb-3">Wasps and bees</h3>
-          <p class="font-body text-body-md text-on-surface-variant">Wasps we remove. Bees we'll relocate where we can, because we like bees more than we like exterminating them. European wasps sorted promptly.</p>
-        </article>
-
-        <article class="service-card bg-surface-container-low p-8 rounded-xl border border-light-coral">
-          <div class="w-12 h-12 bg-racing-red text-antique-white rounded-full flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">key</span>
-          </div>
-          <h3 class="font-display text-headline-sm text-dark-coffee mb-3">End of lease pest treatment</h3>
-          <p class="font-body text-body-md text-on-surface-variant">Real estate signed report, completed in one visit, scheduled around your move date. Flea certificates done where the lease asks for one.</p>
-        </article>
-
-      </div>
-
-      <p class="text-center mt-10 md:mt-12 max-w-2xl mx-auto italic font-body text-body-md text-dark-coffee/80">
-        Not sure what you're dealing with? Send a photo to
-        <a href="sms:0426427299" class="text-racing-red font-bold underline decoration-light-coral">0426 427 299</a>
-        and we'll tell you what it is.
+      <p class="text-center small italic mt-10 max-w-2xl mx-auto reveal" style="color: rgba(37, 22, 5, 0.65);">
+        Not sure which season your problem belongs to? It's almost certainly active right now. Ring Mike on
+        <a href="tel:0426427299" style="color: var(--racing-red);" class="font-bold underline decoration-1 underline-offset-2">0426 427 299</a>.
       </p>
     </div>
   </section>
 
-  <!-- ========== AREA ========== -->
-  <section class="bg-surface py-section-padding-mobile md:py-section-padding-desktop" id="area">
-    <div class="max-w-max-width mx-auto px-gutter-mobile md:px-gutter-desktop">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div class="space-y-stack-lg reveal">
-          <h2 class="font-display text-headline-lg text-dark-coffee">Suburbs we cover</h2>
-          <p class="font-body text-body-lg opacity-85">We're Perth based and Perth focused. Most of our work runs across the northern and inner suburbs, but we'll travel for the right job. If you're not sure whether you're in our patch, give us a ring and we'll tell you straight up.</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Osborne Park</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Joondalup</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Wanneroo</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Stirling</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Gwelup</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Karrinyup</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Scarborough</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Innaloo</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Subiaco</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Cottesloe</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Fremantle</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Mount Lawley</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Morley</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Bayswater</span>
-            <span class="px-4 py-1 bg-surface-container rounded-full text-label-md">Belmont</span>
-          </div>
+  <!-- ============================ COMMERCIAL ============================ -->
+  <section id="commercial" class="section" style="background: var(--night-bordeaux);">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <div class="grid md:grid-cols-12 gap-10 lg:gap-16 items-start mb-12">
+        <div class="md:col-span-7 space-y-5">
+          <span class="pill pill-light reveal">Commercial &amp; property</span>
+          <h2 class="h2 display reveal" style="color: var(--antique-white);">Bigger jobs, same bloke at the door.</h2>
+          <p class="text-base md:text-lg max-w-2xl reveal" style="color: rgba(254, 239, 221, 0.82);">
+            Same family business that looks after Perth homes also looks after the cafes, offices, schools and strata buildings nearby. Discreet, scheduled, with the paperwork sorted for your food safety or compliance audit. Regular service contracts or one-off jobs, your call.
+          </p>
         </div>
-        <div class="img-placeholder-light rounded-xl overflow-hidden h-[400px] relative border border-outline-variant flex items-center justify-center reveal">
-          <svg viewBox="0 0 400 400" class="w-full h-full" role="img" aria-label="Perth metropolitan service area">
-            <path d="M70 50 Q60 100 70 150 Q50 200 80 260 Q70 320 100 360 L160 380 L260 360 L320 320 L340 260 L320 180 L300 120 L260 70 L200 50 L130 40 Z" fill="#4E0110" stroke="#F8777B" stroke-width="1.5" opacity="0.6"/>
-            <path d="M80 280 Q140 270 200 290 Q260 280 320 290" stroke="#F8777B" stroke-width="2" fill="none" opacity="0.5"/>
-            <ellipse cx="200" cy="200" rx="120" ry="140" fill="#EE1C20" opacity="0.3"/>
-            <ellipse cx="200" cy="200" rx="80" ry="100" fill="#EE1C20" opacity="0.35"/>
-            <circle cx="200" cy="220" r="6" fill="#FEEFDD"/>
-            <text x="212" y="225" font-family="Average Sans" font-size="12" font-weight="700" fill="#FEEFDD">Perth CBD</text>
-          </svg>
-          <p class="absolute bottom-4 left-0 right-0 text-center font-body text-label-md text-antique-white">Perth metropolitan service area</p>
+        <div class="md:col-span-5 flex md:justify-end reveal">
+          <a href="#quote" class="btn btn-outline-light">
+            <span class="material-symbols-outlined" style="font-size: 18px;">mail</span>
+            Request a commercial quote
+          </a>
         </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="vertical-tile reveal"><span class="material-symbols-outlined">restaurant</span><span class="small font-bold" style="color: var(--antique-white);">Cafes &amp; restaurants</span></div>
+        <div class="vertical-tile reveal"><span class="material-symbols-outlined">corporate_fare</span><span class="small font-bold" style="color: var(--antique-white);">Offices</span></div>
+        <div class="vertical-tile reveal"><span class="material-symbols-outlined">apartment</span><span class="small font-bold" style="color: var(--antique-white);">Strata &amp; body corp</span></div>
+        <div class="vertical-tile reveal"><span class="material-symbols-outlined">school</span><span class="small font-bold" style="color: var(--antique-white);">Schools &amp; childcare</span></div>
+        <div class="vertical-tile reveal"><span class="material-symbols-outlined">elderly</span><span class="small font-bold" style="color: var(--antique-white);">Aged care</span></div>
+        <div class="vertical-tile reveal"><span class="material-symbols-outlined">warehouse</span><span class="small font-bold" style="color: var(--antique-white);">Warehouses</span></div>
+        <div class="vertical-tile reveal"><span class="material-symbols-outlined">store</span><span class="small font-bold" style="color: var(--antique-white);">Retail</span></div>
+        <div class="vertical-tile reveal"><span class="material-symbols-outlined">construction</span><span class="small font-bold" style="color: var(--antique-white);">Construction sites</span></div>
+        <div class="vertical-tile reveal"><span class="material-symbols-outlined">real_estate_agent</span><span class="small font-bold" style="color: var(--antique-white);">Real estate &amp; PMs</span></div>
+        <div class="vertical-tile reveal"><span class="material-symbols-outlined">local_hotel</span><span class="small font-bold" style="color: var(--antique-white);">Hotels &amp; short-stay</span></div>
+        <div class="vertical-tile reveal"><span class="material-symbols-outlined">grocery</span><span class="small font-bold" style="color: var(--antique-white);">Food retail</span></div>
+        <div class="vertical-tile reveal"><span class="material-symbols-outlined">church</span><span class="small font-bold" style="color: var(--antique-white);">Clubs &amp; community</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ========== REVIEWS ========== -->
-  <section class="bg-night-bordeaux py-section-padding-mobile md:py-section-padding-desktop" id="reviews">
-    <div class="max-w-max-width mx-auto px-gutter-mobile md:px-gutter-desktop">
-      <div class="text-center mb-12 md:mb-16">
-        <h2 class="font-display text-headline-lg text-antique-white">What your neighbours say</h2>
-        <p class="mt-3 text-antique-white/80 font-body text-body-md">5.0 stars across our Google reviews.</p>
+  <!-- ============================ AREA ============================ -->
+  <section id="area" class="section" style="background: var(--antique-white);">
+    <div class="max-w-content mx-auto px-6 lg:px-12 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div class="space-y-5">
+        <span class="pill pill-red-soft reveal">Service area</span>
+        <h2 class="h2 display reveal" style="color: var(--night-bordeaux);">Suburbs we cover.</h2>
+        <p class="text-base md:text-lg reveal" style="color: rgba(37, 22, 5, 0.78);">Perth based and Perth focused. Most of our work runs across the northern and inner suburbs, but we'll travel for the right job. If you're not sure whether you're in our patch, give us a ring and we'll tell you straight up.</p>
+        <div class="flex flex-wrap gap-2 reveal">
+          <span class="pill pill-suburb">Osborne Park</span>
+          <span class="pill pill-suburb">Joondalup</span>
+          <span class="pill pill-suburb">Wanneroo</span>
+          <span class="pill pill-suburb">Stirling</span>
+          <span class="pill pill-suburb">Gwelup</span>
+          <span class="pill pill-suburb">Karrinyup</span>
+          <span class="pill pill-suburb">Scarborough</span>
+          <span class="pill pill-suburb">Innaloo</span>
+          <span class="pill pill-suburb">Subiaco</span>
+          <span class="pill pill-suburb">Cottesloe</span>
+          <span class="pill pill-suburb">Fremantle</span>
+          <span class="pill pill-suburb">Mount Lawley</span>
+          <span class="pill pill-suburb">Morley</span>
+          <span class="pill pill-suburb">Bayswater</span>
+          <span class="pill pill-suburb">Belmont</span>
+        </div>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <div class="bg-antique-white p-8 rounded-xl space-y-4 reveal">
-          <div class="flex gap-1 text-racing-red" aria-label="5 out of 5 stars">
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-          </div>
-          <p class="font-body text-body-md italic">"Highly recommend Michael. He's very knowledgeable and went above and beyond to help us out with our termite issue. The nicest guy and can't recommend him enough. My family has also been using Richill over three generations. 5 stars!!!"</p>
-          <div class="flex items-center gap-3 pt-2">
-            <div class="w-10 h-10 bg-light-coral rounded-full flex items-center justify-center text-antique-white font-bold">SM</div>
-            <span class="font-body text-label-md">Susannah Malcolm</span>
-          </div>
-        </div>
-
-        <div class="bg-antique-white p-8 rounded-xl space-y-4 reveal">
-          <div class="flex gap-1 text-racing-red" aria-label="5 out of 5 stars">
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-          </div>
-          <p class="font-body text-body-md italic">"Highly recommend. Michael provided a thorough inspection of our new home and took the time to walk us through every potential risk and issue. The final report was comprehensive and gave us a clear roadmap for preventative maintenance."</p>
-          <div class="flex items-center gap-3 pt-2">
-            <div class="w-10 h-10 bg-light-coral rounded-full flex items-center justify-center text-antique-white font-bold">CS</div>
-            <span class="font-body text-label-md">Chris Scholte</span>
-          </div>
-        </div>
-
-        <div class="bg-antique-white p-8 rounded-xl space-y-4 reveal">
-          <div class="flex gap-1 text-racing-red" aria-label="5 out of 5 stars">
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-          </div>
-          <p class="font-body text-body-md italic">"Very reliable, reputable and efficient pest control. We have used the guys at Richill for a few years now and have always been very satisfied with the service. Also love the fact they give a low tox option. Thanks team!"</p>
-          <div class="flex items-center gap-3 pt-2">
-            <div class="w-10 h-10 bg-light-coral rounded-full flex items-center justify-center text-antique-white font-bold">RV</div>
-            <span class="font-body text-label-md">Rebecca Vojdinoski</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="text-center mt-10">
-        <a href="https://g.page/r/CWSK8RgHgS1SEBM/review" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-antique-white hover:text-light-coral font-bold underline decoration-racing-red underline-offset-4">
-          <span class="material-symbols-outlined">open_in_new</span>
-          Read all our Google reviews
-        </a>
+      <div class="perth-map-bg rounded-lg overflow-hidden aspect-square md:aspect-[5/6] reveal" style="border: 1px solid rgba(78, 1, 16, 0.1);">
+        <svg viewBox="0 0 400 400" class="w-full h-full" role="img" aria-label="Perth metropolitan service area map">
+          <path d="M70 50 Q60 100 70 150 Q50 200 80 260 Q70 320 100 360 L160 380 L260 360 L320 320 L340 260 L320 180 L300 120 L260 70 L200 50 L130 40 Z" fill="rgba(254, 239, 221, 0.04)" stroke="rgba(248, 119, 123, 0.4)" stroke-width="1.5"/>
+          <path d="M80 280 Q140 270 200 290 Q260 280 320 290" stroke="rgba(248, 119, 123, 0.5)" stroke-width="2" fill="none"/>
+          <ellipse cx="200" cy="210" rx="115" ry="135" fill="rgba(238, 28, 32, 0.20)"/>
+          <ellipse cx="200" cy="210" rx="75" ry="95" fill="rgba(238, 28, 32, 0.25)"/>
+          <circle cx="200" cy="220" r="5" fill="#FEEFDD"/>
+          <text x="212" y="225" font-family="Average Sans" font-size="11" font-weight="700" fill="#FEEFDD">Perth CBD</text>
+          <circle cx="195" cy="120" r="3" fill="rgba(254, 239, 221, 0.7)"/>
+          <text x="205" y="124" font-family="Average Sans" font-size="9" fill="rgba(254, 239, 221, 0.7)">Joondalup</text>
+          <circle cx="190" cy="170" r="3" fill="rgba(254, 239, 221, 0.7)"/>
+          <text x="115" y="174" font-family="Average Sans" font-size="9" fill="rgba(254, 239, 221, 0.7)">Stirling</text>
+          <circle cx="230" cy="280" r="3" fill="rgba(254, 239, 221, 0.7)"/>
+          <text x="240" y="284" font-family="Average Sans" font-size="9" fill="rgba(254, 239, 221, 0.7)">Fremantle</text>
+          <circle cx="285" cy="200" r="3" fill="rgba(254, 239, 221, 0.7)"/>
+          <text x="295" y="204" font-family="Average Sans" font-size="9" fill="rgba(254, 239, 221, 0.7)">Midland</text>
+        </svg>
       </div>
     </div>
   </section>
 
-  <!-- ========== FAQS ========== -->
-  <section class="bg-antique-white py-section-padding-mobile md:py-section-padding-desktop" id="faqs">
-    <div class="max-w-[800px] mx-auto px-gutter-mobile md:px-gutter-desktop">
-      <h2 class="font-display text-headline-lg text-dark-coffee text-center mb-12">Questions we get a lot</h2>
-      <div class="space-y-4">
+  <!-- ============================ REVIEWS (MARQUEE, ALL 6) ============================ -->
+  <section id="reviews" class="section-tight" style="background: var(--cream-soft);">
+    <div class="max-w-content mx-auto px-6 lg:px-12 mb-10">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="pill pill-red-soft reveal">Reviews</span>
+        <h2 class="h2 display reveal" style="color: var(--night-bordeaux);">What Perth says about Mike.</h2>
+        <p class="text-base md:text-lg reveal" style="color: rgba(37, 22, 5, 0.72);">5.0 stars across our Google reviews. Real customers, real names, real Perth suburbs.</p>
+      </div>
+    </div>
 
-        <details class="faq group bg-surface-container-low rounded-lg p-6 border border-outline-variant" data-faq>
-          <summary class="flex justify-between items-center font-display text-headline-sm text-dark-coffee">
-            How much is a pest control visit?
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+    <div class="marquee py-2" id="reviewMarquee">
+      <div class="marquee-track" id="marqueeTrack">
+        <!-- Reviews x2 for seamless loop -->
+        <article class="review-card">
+          <div class="flex gap-0.5 mb-3" aria-label="5 out of 5 stars">
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+          </div>
+          <p class="italic mb-5 text-sm md:text-base" style="color: var(--dark-coffee);">"Highly recommend Michael. He's very knowledgeable and went above and beyond to help us out with our termite issue. The nicest guy and can't recommend him enough. My family has also been using Richill over three generations. 5 stars!!!"</p>
+          <div class="flex items-center gap-3 mt-auto">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: var(--light-coral); color: var(--antique-white);">SM</div>
+            <div class="leading-tight">
+              <div class="font-bold text-sm" style="color: var(--dark-coffee);">Susannah Malcolm</div>
+              <div class="small" style="color: rgba(37, 22, 5, 0.6);">Google review</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="flex gap-0.5 mb-3" aria-label="5 out of 5 stars">
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+          </div>
+          <p class="italic mb-5 text-sm md:text-base" style="color: var(--dark-coffee);">"Highly recommend. Michael provided a thorough inspection of our new home and took the time to walk us through every potential risk and issue. The final report was comprehensive and gave us a clear roadmap for preventative maintenance."</p>
+          <div class="flex items-center gap-3 mt-auto">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: var(--light-coral); color: var(--antique-white);">CS</div>
+            <div class="leading-tight">
+              <div class="font-bold text-sm" style="color: var(--dark-coffee);">Chris Scholte</div>
+              <div class="small" style="color: rgba(37, 22, 5, 0.6);">Google review</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="flex gap-0.5 mb-3" aria-label="5 out of 5 stars">
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+          </div>
+          <p class="italic mb-5 text-sm md:text-base" style="color: var(--dark-coffee);">"Thorough and trustworthy advice. Gave great advice on the best products which would meet our pest control needs but were also safe for my children and pets."</p>
+          <div class="flex items-center gap-3 mt-auto">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: var(--light-coral); color: var(--antique-white);">TS</div>
+            <div class="leading-tight">
+              <div class="font-bold text-sm" style="color: var(--dark-coffee);">Terri-Ann Shilcock</div>
+              <div class="small" style="color: rgba(37, 22, 5, 0.6);">Google review</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="flex gap-0.5 mb-3" aria-label="5 out of 5 stars">
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+          </div>
+          <p class="italic mb-5 text-sm md:text-base" style="color: var(--dark-coffee);">"Great service. Mike is very knowledgeable, solved our cockroach problem quickly and safely. Very trustworthy and felt very comfortable with him in our home. Highly recommend."</p>
+          <div class="flex items-center gap-3 mt-auto">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: var(--light-coral); color: var(--antique-white);">KM</div>
+            <div class="leading-tight">
+              <div class="font-bold text-sm" style="color: var(--dark-coffee);">Kristy Mansfield</div>
+              <div class="small" style="color: rgba(37, 22, 5, 0.6);">Google review</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="flex gap-0.5 mb-3" aria-label="5 out of 5 stars">
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+          </div>
+          <p class="italic mb-5 text-sm md:text-base" style="color: var(--dark-coffee);">"Very reliable, reputable and efficient pest control. We have used the guys at Richill for a few years now and have always been very satisfied with the service. Also love the fact they give a low tox option. Thanks team!"</p>
+          <div class="flex items-center gap-3 mt-auto">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: var(--light-coral); color: var(--antique-white);">RV</div>
+            <div class="leading-tight">
+              <div class="font-bold text-sm" style="color: var(--dark-coffee);">Rebecca Vojdinoski</div>
+              <div class="small" style="color: rgba(37, 22, 5, 0.6);">Google review</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="flex gap-0.5 mb-3" aria-label="5 out of 5 stars">
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+            <span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span>
+          </div>
+          <p class="italic mb-5 text-sm md:text-base" style="color: var(--dark-coffee);">"Will continue to use Richill pest control and recommend to anyone who will listen. Michael did a fantastic job and talked me through everything I needed to know considering we have 3 cats in the house."</p>
+          <div class="flex items-center gap-3 mt-auto">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: var(--light-coral); color: var(--antique-white);">SC</div>
+            <div class="leading-tight">
+              <div class="font-bold text-sm" style="color: var(--dark-coffee);">Sam Campbell</div>
+              <div class="small" style="color: rgba(37, 22, 5, 0.6);">Google review</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Duplicate set for seamless loop -->
+        <article class="review-card" aria-hidden="true">
+          <div class="flex gap-0.5 mb-3"><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span></div>
+          <p class="italic mb-5 text-sm md:text-base" style="color: var(--dark-coffee);">"Highly recommend Michael. He's very knowledgeable and went above and beyond to help us out with our termite issue. The nicest guy and can't recommend him enough. My family has also been using Richill over three generations. 5 stars!!!"</p>
+          <div class="flex items-center gap-3 mt-auto"><div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: var(--light-coral); color: var(--antique-white);">SM</div><div class="leading-tight"><div class="font-bold text-sm" style="color: var(--dark-coffee);">Susannah Malcolm</div><div class="small" style="color: rgba(37, 22, 5, 0.6);">Google review</div></div></div>
+        </article>
+        <article class="review-card" aria-hidden="true">
+          <div class="flex gap-0.5 mb-3"><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span></div>
+          <p class="italic mb-5 text-sm md:text-base" style="color: var(--dark-coffee);">"Highly recommend. Michael provided a thorough inspection of our new home and took the time to walk us through every potential risk and issue. The final report was comprehensive and gave us a clear roadmap for preventative maintenance."</p>
+          <div class="flex items-center gap-3 mt-auto"><div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: var(--light-coral); color: var(--antique-white);">CS</div><div class="leading-tight"><div class="font-bold text-sm" style="color: var(--dark-coffee);">Chris Scholte</div><div class="small" style="color: rgba(37, 22, 5, 0.6);">Google review</div></div></div>
+        </article>
+        <article class="review-card" aria-hidden="true">
+          <div class="flex gap-0.5 mb-3"><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span></div>
+          <p class="italic mb-5 text-sm md:text-base" style="color: var(--dark-coffee);">"Thorough and trustworthy advice. Gave great advice on the best products which would meet our pest control needs but were also safe for my children and pets."</p>
+          <div class="flex items-center gap-3 mt-auto"><div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: var(--light-coral); color: var(--antique-white);">TS</div><div class="leading-tight"><div class="font-bold text-sm" style="color: var(--dark-coffee);">Terri-Ann Shilcock</div><div class="small" style="color: rgba(37, 22, 5, 0.6);">Google review</div></div></div>
+        </article>
+        <article class="review-card" aria-hidden="true">
+          <div class="flex gap-0.5 mb-3"><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span></div>
+          <p class="italic mb-5 text-sm md:text-base" style="color: var(--dark-coffee);">"Great service. Mike is very knowledgeable, solved our cockroach problem quickly and safely. Very trustworthy and felt very comfortable with him in our home. Highly recommend."</p>
+          <div class="flex items-center gap-3 mt-auto"><div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: var(--light-coral); color: var(--antique-white);">KM</div><div class="leading-tight"><div class="font-bold text-sm" style="color: var(--dark-coffee);">Kristy Mansfield</div><div class="small" style="color: rgba(37, 22, 5, 0.6);">Google review</div></div></div>
+        </article>
+        <article class="review-card" aria-hidden="true">
+          <div class="flex gap-0.5 mb-3"><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span></div>
+          <p class="italic mb-5 text-sm md:text-base" style="color: var(--dark-coffee);">"Very reliable, reputable and efficient pest control. We have used the guys at Richill for a few years now and have always been very satisfied with the service. Also love the fact they give a low tox option. Thanks team!"</p>
+          <div class="flex items-center gap-3 mt-auto"><div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: var(--light-coral); color: var(--antique-white);">RV</div><div class="leading-tight"><div class="font-bold text-sm" style="color: var(--dark-coffee);">Rebecca Vojdinoski</div><div class="small" style="color: rgba(37, 22, 5, 0.6);">Google review</div></div></div>
+        </article>
+        <article class="review-card" aria-hidden="true">
+          <div class="flex gap-0.5 mb-3"><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span><span class="material-symbols-outlined icon-fill" style="color: var(--racing-red); font-size: 20px;">star</span></div>
+          <p class="italic mb-5 text-sm md:text-base" style="color: var(--dark-coffee);">"Will continue to use Richill pest control and recommend to anyone who will listen. Michael did a fantastic job and talked me through everything I needed to know considering we have 3 cats in the house."</p>
+          <div class="flex items-center gap-3 mt-auto"><div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm" style="background: var(--light-coral); color: var(--antique-white);">SC</div><div class="leading-tight"><div class="font-bold text-sm" style="color: var(--dark-coffee);">Sam Campbell</div><div class="small" style="color: rgba(37, 22, 5, 0.6);">Google review</div></div></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="text-center mt-10 max-w-content mx-auto px-6 lg:px-12">
+      <a href="https://g.page/r/CWSK8RgHgS1SEBM/review" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold reveal" style="color: var(--racing-red);">
+        <span class="material-symbols-outlined" style="font-size: 18px;">open_in_new</span>
+        Read all our Google reviews
+      </a>
+      <p class="small italic mt-3 max-w-md mx-auto reveal" style="color: rgba(37, 22, 5, 0.65);">Had a job done by us recently? A review would mean the world. Five minutes for you, a lot for a family business.</p>
+    </div>
+  </section>
+
+  <!-- ============================ FAQS (ALL 9) ============================ -->
+  <section id="faqs" class="section" style="background: var(--antique-white);">
+    <div class="max-w-3xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-12 space-y-3">
+        <span class="pill pill-red-soft reveal">FAQs</span>
+        <h2 class="h2 display reveal" style="color: var(--night-bordeaux);">Questions we get a lot.</h2>
+      </div>
+
+      <div>
+        <details class="faq reveal">
+          <summary>
+            <span class="h3 display" style="color: var(--night-bordeaux);">How much is a pest control visit?</span>
+            <span class="material-symbols-outlined plus-icon">add</span>
           </summary>
-          <p class="mt-4 font-body text-body-md opacity-80">Most general treatments land around $250 for a standard Perth home. Termite inspections are quoted on the property, bigger homes and bigger jobs cost more. Whatever it is, we tell you the number upfront. No surprises at the end.</p>
+          <div class="faq-answer-wrap"><div class="faq-answer-inner">
+            <p style="color: rgba(37, 22, 5, 0.82);">Most general treatments land around $250 for a standard Perth home. Termite inspections are quoted on the property, bigger homes and bigger jobs cost more. Whatever it is, we tell you the number upfront. No surprises at the end.</p>
+          </div></div>
         </details>
 
-        <details class="faq group bg-surface-container-low rounded-lg p-6 border border-outline-variant" data-faq>
-          <summary class="flex justify-between items-center font-display text-headline-sm text-dark-coffee">
-            Is it safe for my kids and pets?
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+        <details class="faq reveal">
+          <summary>
+            <span class="h3 display" style="color: var(--night-bordeaux);">Is it safe for my kids and pets?</span>
+            <span class="material-symbols-outlined plus-icon">add</span>
           </summary>
-          <p class="mt-4 font-body text-body-md opacity-80">Yes. We use APVMA approved products that are low toxicity for humans and pets, and where the job allows we use low tox or chemical free options on top of that. We'll always ask about little ones, pets, and any wildlife in the yard before we choose a treatment, and we'll walk you through what to do for an hour or two after we leave.</p>
+          <div class="faq-answer-wrap"><div class="faq-answer-inner">
+            <p style="color: rgba(37, 22, 5, 0.82);">Yes, with one caveat. We use APVMA approved products that are low toxicity for humans and pets, and where the job allows we use low tox or chemical free options on top of that. We'll always ask about little ones, pets, and any wildlife in the yard before we choose a treatment, and we'll walk you through what to do for an hour or two after we leave.</p>
+          </div></div>
         </details>
 
-        <details class="faq group bg-surface-container-low rounded-lg p-6 border border-outline-variant" data-faq>
-          <summary class="flex justify-between items-center font-display text-headline-sm text-dark-coffee">
-            Do you offer a guarantee?
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+        <details class="faq reveal">
+          <summary>
+            <span class="h3 display" style="color: var(--night-bordeaux);">How long until the pests are gone?</span>
+            <span class="material-symbols-outlined plus-icon">add</span>
           </summary>
-          <p class="mt-4 font-body text-body-md opacity-80">Yes. If the same pests come back inside the warranty window on your job, we come back and treat it again. No second invoice, no quibbling.</p>
+          <div class="faq-answer-wrap"><div class="faq-answer-inner">
+            <p style="color: rgba(37, 22, 5, 0.82);">Cockroaches and ants thin out across the first week as they walk through the treatment back to the nest. Rats and mice usually clear inside 7 to 14 days. Bed bugs need two visits over a fortnight. Termite treatments depend on the plan, but you'll know exactly what to expect before we start.</p>
+          </div></div>
         </details>
 
-        <details class="faq group bg-surface-container-low rounded-lg p-6 border border-outline-variant" data-faq>
-          <summary class="flex justify-between items-center font-display text-headline-sm text-dark-coffee">
-            Do you do termite inspections?
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+        <details class="faq reveal">
+          <summary>
+            <span class="h3 display" style="color: var(--night-bordeaux);">Do you offer a guarantee?</span>
+            <span class="material-symbols-outlined plus-icon">add</span>
           </summary>
-          <p class="mt-4 font-body text-body-md opacity-80">Inspections are our speciality. We use thermal imaging and moisture meters, and we write a report to the AS 3660.2 standard so you can use it for a property purchase if you need to.</p>
+          <div class="faq-answer-wrap"><div class="faq-answer-inner">
+            <p style="color: rgba(37, 22, 5, 0.82);">Yes. If the same pests come back inside the warranty window on your job, we come back and treat it again. No second invoice, no quibbling.</p>
+          </div></div>
         </details>
 
-        <details class="faq group bg-surface-container-low rounded-lg p-6 border border-outline-variant" data-faq>
-          <summary class="flex justify-between items-center font-display text-headline-sm text-dark-coffee">
-            How do I book?
-            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+        <details class="faq reveal">
+          <summary>
+            <span class="h3 display" style="color: var(--night-bordeaux);">Do you do termite inspections?</span>
+            <span class="material-symbols-outlined plus-icon">add</span>
           </summary>
-          <p class="mt-4 font-body text-body-md opacity-80">Easiest way is to ring or text Mike on <a href="tel:0426427299" class="text-racing-red font-bold underline decoration-light-coral">0426 427 299</a>. You can also fill in the quote form below and we'll come back to you the same day.</p>
+          <div class="faq-answer-wrap"><div class="faq-answer-inner">
+            <p style="color: rgba(37, 22, 5, 0.82);">Inspections are our speciality. We use thermal imaging and moisture meters, and we write a report to the AS 3660.2 standard so you can use it for a property purchase if you need to.</p>
+          </div></div>
         </details>
 
+        <details class="faq reveal">
+          <summary>
+            <span class="h3 display" style="color: var(--night-bordeaux);">Do you do low tox or chemical free pest control?</span>
+            <span class="material-symbols-outlined plus-icon">add</span>
+          </summary>
+          <div class="faq-answer-wrap"><div class="faq-answer-inner">
+            <p style="color: rgba(37, 22, 5, 0.82);">Yes. Reduced chemistry is one of the things we built the business around. Baiting, exclusion, targeted treatments. We'll tell you honestly which jobs suit a low tox approach and which ones genuinely need a chemical treatment.</p>
+          </div></div>
+        </details>
+
+        <details class="faq reveal">
+          <summary>
+            <span class="h3 display" style="color: var(--night-bordeaux);">How do I book?</span>
+            <span class="material-symbols-outlined plus-icon">add</span>
+          </summary>
+          <div class="faq-answer-wrap"><div class="faq-answer-inner">
+            <p style="color: rgba(37, 22, 5, 0.82);">Easiest way is to ring or text Mike on <a href="tel:0426427299" style="color: var(--racing-red);" class="font-bold underline decoration-1 underline-offset-2">0426 427 299</a>. You can also fill in the quote form below and we'll come back to you the same day.</p>
+          </div></div>
+        </details>
+
+        <details class="faq reveal">
+          <summary>
+            <span class="h3 display" style="color: var(--night-bordeaux);">What suburbs do you cover?</span>
+            <span class="material-symbols-outlined plus-icon">add</span>
+          </summary>
+          <div class="faq-answer-wrap"><div class="faq-answer-inner">
+            <p style="color: rgba(37, 22, 5, 0.82);">Most of Perth metro. If you're not sure, ring us and we'll let you know straight up.</p>
+          </div></div>
+        </details>
+
+        <details class="faq reveal">
+          <summary>
+            <span class="h3 display" style="color: var(--night-bordeaux);">Are you actually a local family business?</span>
+            <span class="material-symbols-outlined plus-icon">add</span>
+          </summary>
+          <div class="faq-answer-wrap"><div class="faq-answer-inner">
+            <p style="color: rgba(37, 22, 5, 0.82);">Yes. My grandfather started Richill in 1959. My dad ran it after him. I run it now. We're not a franchise of a national brand.</p>
+          </div></div>
+        </details>
       </div>
     </div>
   </section>
 
-  <!-- ========== QUOTE ========== -->
-  <section class="bg-dark-coffee py-section-padding-mobile md:py-section-padding-desktop" id="quote">
-    <div class="max-w-max-width mx-auto px-gutter-mobile md:px-gutter-desktop">
-      <div class="bg-antique-white rounded-2xl overflow-hidden grid md:grid-cols-2">
-        <div class="p-8 md:p-12 space-y-stack-lg">
-          <h2 class="font-display text-headline-lg text-dark-coffee">Get a fast quote</h2>
-          <p class="font-body text-body-md">Fill in your details and Mike will be in touch the same day with a fair price. If it's urgent, just ring or text 0426 427 299.</p>
+  <!-- ============================ QUOTE (SPLIT CARD ON CREAM) ============================ -->
+  <section id="quote" class="section" style="background: var(--cream-soft);">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <div class="rounded-lg overflow-hidden grid md:grid-cols-12 reveal" style="background: var(--antique-white); box-shadow: 0 24px 60px rgba(37, 22, 5, 0.08); border: 1px solid rgba(78, 1, 16, 0.06);">
 
-          <form class="space-y-4" id="quoteForm" novalidate>
+        <!-- Left: bordeaux contact panel -->
+        <div class="md:col-span-5 p-8 lg:p-10" style="background: var(--night-bordeaux); background-image: radial-gradient(circle at 0% 0%, rgba(248, 119, 123, 0.08) 0%, transparent 50%);">
+          <span class="pill pill-light">Quote</span>
+          <h2 class="h2 display mt-4 mb-3" style="color: var(--antique-white);">A quote in 60 seconds.</h2>
+          <p class="text-base mb-8" style="color: rgba(254, 239, 221, 0.78);">Tell us what you've spotted and where you are. We'll come back to you the same day. If it's urgent, just ring or text.</p>
+
+          <div class="space-y-4">
+            <a href="tel:0426427299" class="flex items-center gap-3 group">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(254, 239, 221, 0.1);">
+                <span class="material-symbols-outlined" style="color: var(--antique-white); font-size: 20px;">call</span>
+              </div>
+              <div>
+                <div class="small" style="color: rgba(254, 239, 221, 0.6);">Phone</div>
+                <div class="font-bold text-base group-hover:underline" style="color: var(--antique-white);">0426 427 299</div>
+              </div>
+            </a>
+            <a href="sms:0426427299" class="flex items-center gap-3 group">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(254, 239, 221, 0.1);">
+                <span class="material-symbols-outlined" style="color: var(--antique-white); font-size: 20px;">sms</span>
+              </div>
+              <div>
+                <div class="small" style="color: rgba(254, 239, 221, 0.6);">Text</div>
+                <div class="font-bold text-base group-hover:underline" style="color: var(--antique-white);">0426 427 299</div>
+              </div>
+            </a>
+            <a href="mailto:richillpestcontrol@gmail.com" class="flex items-center gap-3 group">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(254, 239, 221, 0.1);">
+                <span class="material-symbols-outlined" style="color: var(--antique-white); font-size: 20px;">mail</span>
+              </div>
+              <div>
+                <div class="small" style="color: rgba(254, 239, 221, 0.6);">Email</div>
+                <div class="font-bold text-sm md:text-base group-hover:underline break-all" style="color: var(--antique-white);">richillpestcontrol@gmail.com</div>
+              </div>
+            </a>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(254, 239, 221, 0.1);">
+                <span class="material-symbols-outlined" style="color: var(--antique-white); font-size: 20px;">schedule</span>
+              </div>
+              <div>
+                <div class="small" style="color: rgba(254, 239, 221, 0.6);">Hours</div>
+                <div class="font-bold text-base" style="color: var(--antique-white);">7 days, 7am to 6pm</div>
+              </div>
+            </div>
+          </div>
+
+          <blockquote class="mt-10 pt-8" style="border-top: 1px solid rgba(254, 239, 221, 0.12);">
+            <p class="pull" style="color: var(--light-coral);">"No call centres here. You ring, you get me."</p>
+            <p class="micro mt-3" style="color: rgba(254, 239, 221, 0.7);">Mike, owner</p>
+          </blockquote>
+        </div>
+
+        <!-- Right: cream form -->
+        <div class="md:col-span-7 p-8 lg:p-10">
+          <h3 class="display text-2xl mb-2" style="color: var(--night-bordeaux);">Send a quick request</h3>
+          <p class="small mb-6" style="color: rgba(37, 22, 5, 0.7);">Same day reply, no obligation.</p>
+
+          <form id="quoteForm" novalidate>
             <div id="formFields" class="space-y-4">
-              <div class="space-y-1">
-                <label class="font-body text-label-md text-dark-coffee block" for="q-name">Your name</label>
-                <input class="w-full h-12 bg-antique-white border border-dark-coffee/10 rounded-lg px-4 focus:border-racing-red focus:ring-1 focus:ring-racing-red focus:outline-none" id="q-name" name="name" type="text" required autocomplete="name" />
+              <div>
+                <label class="field-label" for="q-name">Your name</label>
+                <input class="field-input" id="q-name" name="name" type="text" required autocomplete="name" />
               </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="space-y-1">
-                  <label class="font-body text-label-md text-dark-coffee block" for="q-phone">Best phone number</label>
-                  <input class="w-full h-12 bg-antique-white border border-dark-coffee/10 rounded-lg px-4 focus:border-racing-red focus:ring-1 focus:ring-racing-red focus:outline-none" id="q-phone" name="phone" type="tel" required autocomplete="tel" />
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="field-label" for="q-phone">Best phone number</label>
+                  <input class="field-input" id="q-phone" name="phone" type="tel" required autocomplete="tel" />
                 </div>
-                <div class="space-y-1">
-                  <label class="font-body text-label-md text-dark-coffee block" for="q-suburb">Suburb</label>
-                  <input class="w-full h-12 bg-antique-white border border-dark-coffee/10 rounded-lg px-4 focus:border-racing-red focus:ring-1 focus:ring-racing-red focus:outline-none" id="q-suburb" name="suburb" type="text" required autocomplete="address-level2" />
+                <div>
+                  <label class="field-label" for="q-suburb">Suburb</label>
+                  <input class="field-input" id="q-suburb" name="suburb" type="text" required autocomplete="address-level2" />
                 </div>
               </div>
-
-              <div class="space-y-1">
-                <label class="font-body text-label-md text-dark-coffee block" for="q-pest">What pest are you seeing?</label>
-                <select class="w-full h-12 bg-antique-white border border-dark-coffee/10 rounded-lg px-4 focus:border-racing-red focus:ring-1 focus:ring-racing-red focus:outline-none" id="q-pest" name="pest" required>
+              <div>
+                <label class="field-label" for="q-pest">What pest are you seeing?</label>
+                <select class="field-select" id="q-pest" name="pest" required>
                   <option value="">Choose one</option>
                   <option>Ants</option>
                   <option>Cockroaches</option>
@@ -695,36 +1299,28 @@
                   <option>Other</option>
                 </select>
               </div>
-
-              <label class="flex items-start gap-3 cursor-pointer pt-1">
-                <input type="checkbox" id="q-lowtox" name="lowtox" class="mt-1 w-5 h-5 accent-racing-red" />
-                <span class="text-sm text-dark-coffee">I'm interested in the low tox option.</span>
+              <div>
+                <label class="field-label" for="q-message">A few words about what's going on (optional)</label>
+                <textarea class="field-textarea" id="q-message" name="message" rows="3"></textarea>
+              </div>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" id="q-lowtox" name="lowtox" class="mt-1 w-5 h-5 accent-[#EE1C20] rounded" />
+                <span class="text-sm" style="color: var(--dark-coffee);">I'm interested in the low tox option.</span>
               </label>
-
-              <button class="w-full py-4 btn-primary mt-2" type="submit">Send request</button>
-
-              <p class="text-xs opacity-70 pt-1">We only use your details to send you a quote. We don't share them, we don't sign you up to anything.</p>
-
-              <div id="formError" class="hidden text-sm text-racing-red font-bold pt-1" role="alert"></div>
+              <button type="submit" class="btn btn-primary w-full mt-2">
+                <span class="material-symbols-outlined" style="font-size: 18px;">send</span>
+                Send my quote request
+              </button>
+              <p class="small mt-2" style="color: rgba(37, 22, 5, 0.6);">We only use your details to send you a quote. We don't share them, we don't sign you up to anything.</p>
+              <div id="formError" class="hidden small font-bold pt-1" role="alert" style="color: var(--racing-red);"></div>
             </div>
 
-            <div id="formSuccess" class="hidden text-center py-6">
-              <span class="material-symbols-outlined text-racing-red" style="font-size: 48px;">verified</span>
-              <h3 class="font-display text-headline-sm text-dark-coffee mt-2 mb-2">Cheers, your request is on the way to Mike.</h3>
-              <p class="font-body text-body-md opacity-85">He'll be in touch the same day.</p>
+            <div id="formSuccess" class="hidden text-center py-8">
+              <span class="material-symbols-outlined" style="font-size: 56px; color: var(--racing-red);">verified</span>
+              <h3 class="h3 display mt-2 mb-2" style="color: var(--night-bordeaux);">Cheers, your request is on the way to Mike.</h3>
+              <p class="text-base" style="color: rgba(37, 22, 5, 0.8);">He'll be in touch the same day. If it's urgent, ring or text <a href="tel:0426427299" style="color: var(--racing-red);" class="font-bold underline">0426 427 299</a>.</p>
             </div>
           </form>
-        </div>
-
-        <div class="relative min-h-[300px] img-placeholder flex items-center justify-center">
-          <div class="text-center text-antique-white/70 px-6">
-            <span class="material-symbols-outlined" style="font-size: 48px;">home</span>
-            <p class="text-sm mt-2 max-w-[220px] mx-auto">Photo placeholder: a clean Perth home, post-treatment.</p>
-          </div>
-          <div class="absolute bottom-8 left-8 right-8 text-antique-white">
-            <p class="font-display text-headline-sm italic leading-snug">"No call centres here. You'll talk straight to me."</p>
-            <p class="text-sm opacity-80 mt-1">Mike, owner</p>
-          </div>
         </div>
       </div>
     </div>
@@ -732,50 +1328,70 @@
 
 </main>
 
-<!-- ========== FOOTER ========== -->
-<footer class="bg-dark-coffee w-full">
-  <div class="flex flex-col md:flex-row justify-between items-start px-gutter-mobile md:px-gutter-desktop py-section-padding-mobile md:py-section-padding-desktop max-w-max-width mx-auto gap-12">
-    <div class="space-y-4">
-      <a href="#home" class="inline-flex items-center gap-3" aria-label="Richill Pest Control home">
-        <img src="logo.svg" alt="" class="h-12 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
-        <span class="font-display text-headline-md text-racing-red" style="display:none;">Richill Pest Control</span>
+<!-- ============================ FOOTER ============================ -->
+<footer style="background: var(--night-bordeaux); color: var(--antique-white);">
+  <div class="max-w-content mx-auto px-6 lg:px-12 pt-16 lg:pt-20 pb-10 grid md:grid-cols-12 gap-10">
+    <div class="md:col-span-5 space-y-4">
+      <a href="#home" class="flex items-center gap-3" aria-label="Richill Pest Control home">
+        <img src="logo.svg" alt="" class="h-14 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+        <span style="display:none;" class="display italic" style="font-size: 28px; color: var(--racing-red);">Richill Pest Control</span>
       </a>
-      <p class="text-antique-white opacity-80 max-w-xs font-body text-body-md">A third-generation family business keeping Perth pest free since 1959. Termite specialists. Low tox options.</p>
-      <div class="flex flex-col gap-2 text-antique-white opacity-80 text-sm pt-2">
-        <p>WA Health Pest Management Licence: <span class="opacity-70">[to be added]</span></p>
-        <p>ABN: <span class="opacity-70">[to be added]</span></p>
-      </div>
-      <div class="flex flex-col gap-2 text-antique-white pt-2">
-        <a class="hover:text-light-coral transition-colors" href="tel:0426427299">0426 427 299</a>
-        <a class="hover:text-light-coral transition-colors break-all" href="mailto:richillpestcontrol@gmail.com">richillpestcontrol@gmail.com</a>
-        <p class="opacity-80 text-sm">7 days a week, 7am to 6pm</p>
+      <p class="text-sm max-w-xs" style="color: rgba(254, 239, 221, 0.78);">Family run pest control in Perth since 1959. Termite specialists. Low tox options. A bloke at your door who treats your home like his own.</p>
+      <div class="text-sm space-y-1 pt-2" style="color: rgba(254, 239, 221, 0.68);">
+        <p>WA Health Pest Management Licence: <span style="color: rgba(254, 239, 221, 0.5);">[to be added]</span></p>
+        <p>ABN: <span style="color: rgba(254, 239, 221, 0.5);">[to be added]</span></p>
       </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-12 text-antique-white">
-      <div class="space-y-4">
-        <h4 class="font-bold text-racing-red uppercase tracking-wider text-sm">Quick links</h4>
-        <nav class="flex flex-col gap-2 opacity-80 text-sm">
-          <a class="hover:text-antique-white hover:underline decoration-racing-red" href="#services">Services</a>
-          <a class="hover:text-antique-white hover:underline decoration-racing-red" href="#story">Our story</a>
-          <a class="hover:text-antique-white hover:underline decoration-racing-red" href="#reviews">Reviews</a>
-          <a class="hover:text-antique-white hover:underline decoration-racing-red" href="#faqs">FAQs</a>
-          <a class="hover:text-antique-white hover:underline decoration-racing-red" href="#quote">Get a quote</a>
-        </nav>
-      </div>
-      <div class="space-y-4">
-        <h4 class="font-bold text-racing-red uppercase tracking-wider text-sm">Find us</h4>
-        <nav class="flex flex-col gap-2 opacity-80 text-sm">
-          <a class="hover:text-antique-white hover:underline decoration-racing-red" href="https://www.facebook.com/RichillPestServices" target="_blank" rel="noopener">Facebook</a>
-          <a class="hover:text-antique-white hover:underline decoration-racing-red" href="https://g.page/r/CWSK8RgHgS1SEBM" target="_blank" rel="noopener">Google</a>
-          <a class="hover:text-antique-white hover:underline decoration-racing-red" href="#">Privacy policy</a>
-          <a class="hover:text-antique-white hover:underline decoration-racing-red" href="#">Terms</a>
-        </nav>
+    <div class="md:col-span-3">
+      <h4 class="micro mb-4" style="color: var(--racing-red);">Quick links</h4>
+      <nav class="flex flex-col gap-2 text-sm">
+        <a href="#story" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">Our story</a>
+        <a href="#services" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">Services</a>
+        <a href="#termite" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">Termite specialists</a>
+        <a href="#commercial" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">Commercial</a>
+        <a href="#area" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">Service area</a>
+        <a href="#reviews" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">Reviews</a>
+        <a href="#faqs" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">FAQs</a>
+        <a href="#quote" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">Get a quote</a>
+      </nav>
+    </div>
+
+    <div class="md:col-span-4">
+      <h4 class="micro mb-4" style="color: var(--racing-red);">Contact</h4>
+      <div class="space-y-3 text-sm">
+        <a href="tel:0426427299" class="flex items-center gap-3" style="color: rgba(254, 239, 221, 0.92);">
+          <span class="material-symbols-outlined" style="font-size: 18px;">call</span>
+          <span><strong>Call or text:</strong> 0426 427 299</span>
+        </a>
+        <a href="mailto:richillpestcontrol@gmail.com" class="flex items-center gap-3 break-all" style="color: rgba(254, 239, 221, 0.92);">
+          <span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px;">mail</span>
+          <span>richillpestcontrol@gmail.com</span>
+        </a>
+        <div class="flex items-center gap-3" style="color: rgba(254, 239, 221, 0.92);">
+          <span class="material-symbols-outlined" style="font-size: 18px;">schedule</span>
+          <span>7 days a week, 7am to 6pm</span>
+        </div>
+        <div class="flex items-center gap-3 pt-3">
+          <a href="https://www.facebook.com/RichillPestServices" target="_blank" rel="noopener" aria-label="Facebook" class="w-9 h-9 rounded-lg flex items-center justify-center transition-colors" style="background: rgba(254, 239, 221, 0.08); color: var(--antique-white);" onmouseover="this.style.background='var(--racing-red)'" onmouseout="this.style.background='rgba(254, 239, 221, 0.08)'">
+            <span class="material-symbols-outlined" style="font-size: 18px;">thumb_up</span>
+          </a>
+          <a href="https://g.page/r/CWSK8RgHgS1SEBM" target="_blank" rel="noopener" aria-label="Google" class="w-9 h-9 rounded-lg flex items-center justify-center transition-colors" style="background: rgba(254, 239, 221, 0.08); color: var(--antique-white);" onmouseover="this.style.background='var(--racing-red)'" onmouseout="this.style.background='rgba(254, 239, 221, 0.08)'">
+            <span class="material-symbols-outlined" style="font-size: 18px;">star</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-  <div class="max-w-max-width mx-auto px-gutter-mobile md:px-gutter-desktop py-6 border-t border-antique-white/10 text-antique-white opacity-60 text-center md:text-left text-sm">
-    <p>© 2026 Richill Pest Control. Family owned and run in Perth since 1959.</p>
+
+  <div style="border-top: 1px solid rgba(248, 119, 123, 0.18);">
+    <div class="max-w-content mx-auto px-6 lg:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style="color: rgba(254, 239, 221, 0.65);">
+      <p>© 2026 Richill Pest Control. Family owned and run in Perth since 1959.</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.65);">Privacy</a>
+        <a href="#" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.65);">Terms</a>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -789,98 +1405,298 @@
   </a>
 </div>
 
+<!-- ============================ GSAP ============================ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
 <script>
-  // Mobile menu toggle
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  function setMobileMenu(open) {
-    mobileMenu.classList.toggle('open', open);
-    mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+(() => {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const EASE = 'power3.out';
+
+  // ============== HERO CANVAS PARTICLES ==============
+  function initHeroCanvas() {
+    if (prefersReduced) return;
+    const canvas = document.getElementById('heroCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let raf;
+    let w = 0, h = 0;
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = canvas.parentElement.getBoundingClientRect();
+      w = rect.width; h = rect.height;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.scale(dpr, dpr);
+
+      const count = Math.min(48, Math.floor((w * h) / 22000));
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: 1 + Math.random() * 2.2,
+        vx: -0.05 + Math.random() * 0.1,
+        vy: -0.15 - Math.random() * 0.25,
+        a: 0.04 + Math.random() * 0.12,
+      }));
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
+        if (p.x < -10) p.x = w + 10;
+        if (p.x > w + 10) p.x = -10;
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(248, 119, 123, ${p.a})`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      raf = requestAnimationFrame(tick);
+    }
+
+    resize();
+    tick();
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(raf);
+      resize(); tick();
+    }, { passive: true });
   }
-  mobileMenuBtn.addEventListener('click', () => setMobileMenu(!mobileMenu.classList.contains('open')));
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMobileMenu(false)));
 
-  // FAQ: only one open at a time
-  document.querySelectorAll('details.faq').forEach(d => {
-    d.addEventListener('toggle', () => {
-      if (d.open) {
-        document.querySelectorAll('details.faq').forEach(other => { if (other !== d) other.open = false; });
-      }
-    });
-  });
+  // ============== STICKY NAV STATE ==============
+  function initNav() {
+    const nav = document.getElementById('topNav');
+    if (!nav) return;
+    const update = () => {
+      if (window.scrollY > 80) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
 
-  // Header scroll shadow
-  const nav = document.getElementById('topNav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) nav.classList.add('shadow-md');
-    else nav.classList.remove('shadow-md');
-  }, { passive: true });
+  // ============== MOBILE MENU ==============
+  function initMobileMenu() {
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+    const nav = document.getElementById('topNav');
+    if (!btn || !menu) return;
+    const setOpen = (open) => {
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) nav.classList.add('scrolled');
+    };
+    btn.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+  }
 
-  // Quote form handling (POSTs to /api/quote placeholder)
-  const form = document.getElementById('quoteForm');
-  const formFields = document.getElementById('formFields');
-  const formSuccess = document.getElementById('formSuccess');
-  const formError = document.getElementById('formError');
+  // ============== HERO INTRO ==============
+  function initHeroIntro() {
+    const copy = document.querySelectorAll('[data-hero-anim]');
+    const img = document.querySelector('[data-hero-img]');
+    const copyWrap = document.querySelector('[data-hero-copy]');
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    formError.classList.add('hidden');
+    if (copyWrap) copyWrap.classList.remove('hidden-init');
+    if (img) img.classList.remove('hidden-init');
 
-    const required = ['q-name', 'q-phone', 'q-suburb', 'q-pest'];
-    let firstInvalid = null;
-    required.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el.value.trim()) {
-        el.style.borderColor = '#EE1C20';
-        el.style.boxShadow = '0 0 0 1px #EE1C20';
-        if (!firstInvalid) firstInvalid = el;
-      } else {
-        el.style.borderColor = '';
-        el.style.boxShadow = '';
-      }
-    });
-    if (firstInvalid) {
-      formError.textContent = 'Please fill in the highlighted fields.';
-      formError.classList.remove('hidden');
-      firstInvalid.focus();
+    if (prefersReduced) {
+      gsap.set(copy, { opacity: 1, y: 0 });
+      if (img) gsap.set(img, { opacity: 1, y: 0 });
       return;
     }
 
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.innerText = 'Sending...';
+    gsap.set(copy, { opacity: 0, y: 28 });
+    if (img) gsap.set(img, { opacity: 0, y: 28, scale: 0.97 });
 
-    try {
-      await fetch('/api/quote', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: document.getElementById('q-name').value,
-          phone: document.getElementById('q-phone').value,
-          suburb: document.getElementById('q-suburb').value,
-          pest: document.getElementById('q-pest').value,
-          lowtox: document.getElementById('q-lowtox').checked,
-        }),
-      });
-    } catch (err) {
-      // Endpoint not wired yet, still show success in the static build.
-    }
-    formFields.classList.add('hidden');
-    formSuccess.classList.remove('hidden');
-    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
-
-  // Reveal on scroll
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  } else {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    const tl = gsap.timeline({ defaults: { ease: EASE, duration: 0.8 } });
+    tl.to(copy, { opacity: 1, y: 0, stagger: 0.08 }, 0)
+      .to(img, { opacity: 1, y: 0, scale: 1, duration: 1.1 }, 0.1);
   }
+
+  // ============== STAGGERED SCROLL REVEALS ==============
+  function initReveals() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Group reveal elements by section so siblings stagger together
+    document.querySelectorAll('section, footer, .marquee, .trust-row').forEach(section => {
+      const items = section.querySelectorAll('.reveal');
+      if (!items.length) return;
+
+      if (prefersReduced) {
+        gsap.set(items, { opacity: 1, y: 0 });
+        return;
+      }
+
+      gsap.fromTo(items,
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.7,
+          ease: EASE,
+          stagger: 0.07,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 82%',
+            once: true,
+          }
+        }
+      );
+    });
+  }
+
+  // ============== REVIEWS MARQUEE ==============
+  function initMarquee() {
+    const track = document.getElementById('marqueeTrack');
+    const wrap = document.getElementById('reviewMarquee');
+    if (!track || !wrap) return;
+
+    if (prefersReduced) return;
+
+    // Compute the width of the original (non-duplicated) set
+    const originalSetWidth = track.scrollWidth / 2;
+
+    const tween = gsap.to(track, {
+      x: -originalSetWidth,
+      duration: 60,
+      ease: 'none',
+      repeat: -1,
+    });
+
+    wrap.addEventListener('mouseenter', () => tween.timeScale(0.15));
+    wrap.addEventListener('mouseleave', () => tween.timeScale(1));
+    wrap.addEventListener('focusin', () => tween.timeScale(0.15));
+    wrap.addEventListener('focusout', () => tween.timeScale(1));
+  }
+
+  // ============== FAQ ACCORDION (smooth) ==============
+  function initFAQ() {
+    document.querySelectorAll('details.faq').forEach(d => {
+      const wrap = d.querySelector('.faq-answer-wrap');
+      const inner = d.querySelector('.faq-answer-inner');
+      if (!wrap || !inner) return;
+
+      // Initialise closed state
+      wrap.style.height = '0px';
+
+      d.addEventListener('click', (e) => {
+        // Intercept default toggle so we can animate
+        e.preventDefault();
+        const isOpen = d.open;
+        if (isOpen) {
+          // Close
+          gsap.to(wrap, {
+            height: 0,
+            duration: 0.32,
+            ease: 'power3.in',
+            onComplete: () => { d.open = false; }
+          });
+        } else {
+          // Close all others first
+          document.querySelectorAll('details.faq[open]').forEach(other => {
+            if (other === d) return;
+            const otherWrap = other.querySelector('.faq-answer-wrap');
+            gsap.to(otherWrap, {
+              height: 0,
+              duration: 0.32,
+              ease: 'power3.in',
+              onComplete: () => { other.open = false; }
+            });
+          });
+          // Open this one
+          d.open = true;
+          const targetHeight = inner.offsetHeight;
+          gsap.fromTo(wrap, { height: 0 }, {
+            height: targetHeight,
+            duration: 0.42,
+            ease: EASE,
+            onComplete: () => { wrap.style.height = 'auto'; }
+          });
+        }
+      });
+    });
+  }
+
+  // ============== QUOTE FORM ==============
+  function initQuoteForm() {
+    const form = document.getElementById('quoteForm');
+    if (!form) return;
+    const formFields = document.getElementById('formFields');
+    const formSuccess = document.getElementById('formSuccess');
+    const formError = document.getElementById('formError');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      formError.classList.add('hidden');
+
+      const required = ['q-name', 'q-phone', 'q-suburb', 'q-pest'];
+      let firstInvalid = null;
+      required.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          el.style.borderColor = 'var(--racing-red)';
+          el.style.boxShadow = '0 0 0 3px rgba(238, 28, 32, 0.12)';
+          if (!firstInvalid) firstInvalid = el;
+        } else {
+          el.style.borderColor = '';
+          el.style.boxShadow = '';
+        }
+      });
+      if (firstInvalid) {
+        formError.textContent = 'Please fill in the highlighted fields.';
+        formError.classList.remove('hidden');
+        firstInvalid.focus();
+        return;
+      }
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size:18px;">sync</span> Sending...';
+
+      try {
+        await fetch('/api/quote', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: document.getElementById('q-name').value,
+            phone: document.getElementById('q-phone').value,
+            suburb: document.getElementById('q-suburb').value,
+            pest: document.getElementById('q-pest').value,
+            message: document.getElementById('q-message').value,
+            lowtox: document.getElementById('q-lowtox').checked,
+          }),
+        });
+      } catch (err) { /* endpoint not wired yet */ }
+
+      formFields.classList.add('hidden');
+      formSuccess.classList.remove('hidden');
+      gsap.from(formSuccess, { opacity: 0, y: 12, duration: 0.5, ease: EASE });
+    });
+  }
+
+  // ============== INIT ==============
+  function init() {
+    initNav();
+    initMobileMenu();
+    initHeroCanvas();
+    initHeroIntro();
+    initReveals();
+    initMarquee();
+    initFAQ();
+    initQuoteForm();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>
 </body>
 </html>
