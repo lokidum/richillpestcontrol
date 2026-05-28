@@ -301,6 +301,34 @@
       radial-gradient(circle at 100% 100%, rgba(78, 1, 16, 0.4) 0%, transparent 50%);
   }
 
+  /* Termite grid: 2-row x 2-column layout so left photos align with right boxes */
+  .termite-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+  .termite-photo { margin: 0; min-height: 280px; }
+  .termite-tech-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .termite-tech-grid > * { display: flex; flex-direction: column; }
+  @media (min-width: 768px) {
+    .termite-grid {
+      grid-template-columns: 5fr 7fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .termite-photo-top, .termite-tech-grid { grid-row: 1; }
+    .termite-photo-bottom, .termite-treatments { grid-row: 2; }
+    .termite-photo { min-height: 0; }
+  }
+  @media (min-width: 1024px) {
+    .termite-grid { gap: 24px; }
+    .termite-tech-grid { gap: 16px; }
+  }
+
   /* ============== PEST SEASONS ============== */
   .season-card {
     background: var(--antique-white);
@@ -472,6 +500,81 @@
 
   /* Helper visibility */
   .hidden-init { visibility: hidden; }
+
+  /* ============== QUOTE MODAL ============== */
+  .quote-modal-wrap {
+    position: fixed; inset: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: center;
+    padding: 16px;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .quote-modal-wrap.open {
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .quote-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(37, 22, 5, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+  }
+  .quote-modal {
+    position: relative;
+    background: var(--antique-white);
+    border-radius: 8px;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(78, 1, 16, 0.06);
+    width: 100%;
+    max-width: 580px;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  .quote-modal::-webkit-scrollbar { width: 8px; }
+  .quote-modal::-webkit-scrollbar-track { background: transparent; }
+  .quote-modal::-webkit-scrollbar-thumb { background: rgba(78, 1, 16, 0.15); border-radius: 8px; }
+
+  .quote-modal-header {
+    padding: 24px 28px 16px;
+    border-bottom: 1px solid rgba(78, 1, 16, 0.08);
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 16px;
+    position: sticky; top: 0;
+    background: var(--antique-white);
+    z-index: 2;
+  }
+  .quote-modal-body { padding: 24px 28px 28px; }
+
+  .quote-close-btn {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(78, 1, 16, 0.06);
+    color: var(--dark-coffee);
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background 180ms var(--ease-out-quart), color 180ms var(--ease-out-quart);
+    cursor: pointer;
+    border: none;
+  }
+  .quote-close-btn:hover {
+    background: var(--racing-red);
+    color: var(--antique-white);
+  }
+
+  body.modal-open { overflow: hidden; }
+
+  @media (max-width: 640px) {
+    .quote-modal-wrap { padding: 0; align-items: flex-end; }
+    .quote-modal {
+      max-width: 100%;
+      max-height: 92dvh;
+      border-radius: 16px 16px 0 0;
+    }
+    .quote-modal-header { padding: 20px 20px 14px; border-radius: 16px 16px 0 0; }
+    .quote-modal-body { padding: 20px 20px 24px; }
+  }
 </style>
 
 <script type="application/ld+json">
@@ -532,7 +635,7 @@
         <span class="material-symbols-outlined" style="font-size: 18px;">call</span>
         0426 427 299
       </a>
-      <a href="#quote" class="btn btn-primary">Get a quote</a>
+      <button type="button" class="btn btn-primary" data-open-quote>Get a quote</button>
     </div>
 
     <button class="md:hidden p-2 -mr-2" aria-label="Open menu" aria-expanded="false" id="mobileMenuBtn" style="color: var(--antique-white);">
@@ -551,7 +654,7 @@
       <a href="#commercial" class="py-2" style="color: var(--dark-coffee);">Commercial</a>
       <a href="#reviews" class="py-2" style="color: var(--dark-coffee);">Reviews</a>
       <a href="#faqs" class="py-2" style="color: var(--dark-coffee);">FAQs</a>
-      <a href="#quote" class="btn btn-primary mt-3">Get a quote</a>
+      <button type="button" class="btn btn-primary mt-3" data-open-quote>Get a quote</button>
     </div>
   </div>
 </nav>
@@ -572,67 +675,59 @@
           Same family. Same standards. Safer treatments, honest answers, and a bloke at your door who treats your home like his own.
         </p>
         <div class="flex flex-wrap gap-3 pt-2" data-hero-anim>
-          <a href="#quote" class="btn btn-primary glow">Get a free quote</a>
+          <button type="button" class="btn btn-primary glow" data-open-quote>Get a free quote</button>
           <a href="tel:0426427299" class="btn btn-outline-light">
             <span class="material-symbols-outlined" style="font-size: 18px;">call</span>
             Call or text Mike
           </a>
         </div>
-        <div class="flex flex-wrap gap-2 pt-4" data-hero-anim>
-          <span class="pill pill-light">Termite specialists</span>
-          <span class="pill pill-light">Low tox options</span>
-          <span class="pill pill-light">
-            <span class="material-symbols-outlined icon-fill" style="font-size: 12px; color: var(--racing-red);">star</span>
-            5.0 on Google
-          </span>
-          <span class="pill pill-light">7 days, 7am to 6pm</span>
-        </div>
       </div>
 
       <div class="md:col-span-5 hidden-init" data-hero-img>
         <div class="hero-image-frame aspect-[4/5] flex items-center justify-center">
-          <div class="text-center px-6" style="color: rgba(254, 239, 221, 0.4);">
+          <img src="hero-mike.jpg" alt="Mike from Richill Pest Control, standing in his polo next to the signwritten ute outside a modern Perth home" class="absolute inset-0 w-full h-full object-cover" loading="eager" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="absolute inset-0 flex-col items-center justify-center px-6 text-center" style="color: rgba(254, 239, 221, 0.4); display: none;">
             <span class="material-symbols-outlined" style="font-size: 48px;">image</span>
-            <p class="small mt-2 max-w-[200px] mx-auto">Photo placeholder: Mike on a Perth job, ute visible, warm afternoon light.</p>
+            <p class="small mt-2 max-w-[200px] mx-auto">Save the hero photo as <code>hero-mike.jpg</code> in the project root.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust badges row, integrated into hero on the same bordeaux surface -->
+    <div class="relative max-w-content mx-auto px-6 lg:px-12 pb-16 lg:pb-20">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5 lg:gap-8 pt-10" style="border-top: 1px solid rgba(248, 119, 123, 0.18);">
+        <div class="flex items-start gap-3 reveal">
+          <span class="material-symbols-outlined flex-shrink-0" style="font-size: 24px; color: var(--racing-red);">verified</span>
+          <div class="leading-tight">
+            <div class="font-bold text-sm" style="color: var(--antique-white);">Fully licensed</div>
+            <div class="small" style="color: rgba(254, 239, 221, 0.6);">WA Health Pest Management</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 reveal">
+          <span class="material-symbols-outlined flex-shrink-0" style="font-size: 24px; color: var(--racing-red);">shield</span>
+          <div class="leading-tight">
+            <div class="font-bold text-sm" style="color: var(--antique-white);">Public liability</div>
+            <div class="small" style="color: rgba(254, 239, 221, 0.6);">$20m cover, every job</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 reveal">
+          <span class="material-symbols-outlined flex-shrink-0" style="font-size: 24px; color: var(--racing-red);">eco</span>
+          <div class="leading-tight">
+            <div class="font-bold text-sm" style="color: var(--antique-white);">APVMA approved</div>
+            <div class="small" style="color: rgba(254, 239, 221, 0.6);">Low tox where it suits</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 reveal">
+          <span class="material-symbols-outlined flex-shrink-0" style="font-size: 24px; color: var(--racing-red);">description</span>
+          <div class="leading-tight">
+            <div class="font-bold text-sm" style="color: var(--antique-white);">AS 3660.2 reports</div>
+            <div class="small" style="color: rgba(254, 239, 221, 0.6);">Bank and agent accepted</div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ============================ TRUST STRIP ============================ -->
-  <div style="background: var(--cream); border-top: 1px solid rgba(78, 1, 16, 0.06); border-bottom: 1px solid rgba(78, 1, 16, 0.06);">
-    <div class="max-w-content mx-auto px-6 lg:px-12 py-6 grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="flex items-center gap-3 reveal">
-        <span class="material-symbols-outlined" style="font-size: 26px; color: var(--racing-red);">verified</span>
-        <div class="leading-tight">
-          <div class="font-bold text-sm" style="color: var(--dark-coffee);">Fully licensed</div>
-          <div class="small" style="color: rgba(37, 22, 5, 0.65);">WA Health Pest Management</div>
-        </div>
-      </div>
-      <div class="flex items-center gap-3 reveal">
-        <span class="material-symbols-outlined" style="font-size: 26px; color: var(--racing-red);">shield</span>
-        <div class="leading-tight">
-          <div class="font-bold text-sm" style="color: var(--dark-coffee);">Public liability</div>
-          <div class="small" style="color: rgba(37, 22, 5, 0.65);">$20m cover, every job</div>
-        </div>
-      </div>
-      <div class="flex items-center gap-3 reveal">
-        <span class="material-symbols-outlined" style="font-size: 26px; color: var(--racing-red);">eco</span>
-        <div class="leading-tight">
-          <div class="font-bold text-sm" style="color: var(--dark-coffee);">APVMA approved</div>
-          <div class="small" style="color: rgba(37, 22, 5, 0.65);">Low tox where it suits</div>
-        </div>
-      </div>
-      <div class="flex items-center gap-3 reveal">
-        <span class="material-symbols-outlined" style="font-size: 26px; color: var(--racing-red);">description</span>
-        <div class="leading-tight">
-          <div class="font-bold text-sm" style="color: var(--dark-coffee);">AS 3660.2 reports</div>
-          <div class="small" style="color: rgba(37, 22, 5, 0.65);">Bank and agent accepted</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ============================ STORY ============================ -->
   <section id="story" class="story-bg section">
@@ -735,23 +830,28 @@
 
   <!-- ============================ TERMITE SPECIALIST ============================ -->
   <section id="termite" class="termite-bg section">
-    <div class="max-w-content mx-auto px-6 lg:px-12 grid md:grid-cols-12 gap-10 lg:gap-16 items-start">
-      <div class="md:col-span-5 space-y-6">
+    <div class="max-w-content mx-auto px-6 lg:px-12">
+      <!-- Section header, spans full width -->
+      <div class="text-center max-w-2xl mx-auto mb-12 lg:mb-16 space-y-4">
         <span class="pill pill-light reveal">Termite specialists</span>
         <h2 class="h2 display reveal" style="color: var(--antique-white);">The white ant work, done properly.</h2>
-        <div class="space-y-4 text-base md:text-lg" style="color: rgba(254, 239, 221, 0.82);">
-          <p class="reveal">Termite inspections are the heart of the business. Not a tick-box upsell after a general spray. We take the time it takes, we use the gear that actually finds them, and we write reports a bank or an agent will accept.</p>
-          <p class="reveal">In Perth's sandy ground and double-brick housing, you can't eyeball a termite job. You need to see behind the walls.</p>
-        </div>
-        <div class="flex flex-wrap gap-2 pt-2 reveal">
-          <span class="pill pill-light">AS 3660.2 reports</span>
-          <span class="pill pill-light">Thermal imaging</span>
-          <span class="pill pill-light">Moisture mapping</span>
-          <span class="pill pill-light">Termatrac radar</span>
-        </div>
+        <p class="text-base md:text-lg reveal" style="color: rgba(254, 239, 221, 0.78);">Inspections are the heart of the business. We use the gear that actually finds them, and write reports a bank or an agent will accept.</p>
       </div>
+    </div>
 
-      <div class="md:col-span-7 grid sm:grid-cols-2 gap-4">
+    <div class="max-w-content mx-auto px-6 lg:px-12 termite-grid">
+      <!-- Row 1, left: photo aligned with right-side 2x2 tech grid -->
+      <figure class="reveal termite-photo termite-photo-top">
+        <div class="hero-image-frame h-full flex items-center justify-center">
+          <div class="text-center px-6" style="color: rgba(254, 239, 221, 0.35);">
+            <span class="material-symbols-outlined" style="font-size: 44px;">photo_camera</span>
+            <p class="small mt-2 max-w-[220px] mx-auto">Photo placeholder: Mike inspecting a wall with the thermal camera, warm work-light glow.</p>
+          </div>
+        </div>
+      </figure>
+
+      <!-- Row 1, right: tech 2x2 grid -->
+      <div class="termite-tech-grid">
         <div class="card-dark p-6 reveal">
           <span class="material-symbols-outlined" style="font-size: 28px; color: var(--racing-red);">thermostat</span>
           <h4 class="display text-xl mt-3 mb-2" style="color: var(--antique-white);">Thermal imaging</h4>
@@ -772,23 +872,34 @@
           <h4 class="display text-xl mt-3 mb-2" style="color: var(--antique-white);">Borescope camera</h4>
           <p class="small" style="color: rgba(254, 239, 221, 0.78);">Tiny camera on a flexible cable for tight spots like roof voids, sub-floors, and skirting cavities.</p>
         </div>
+      </div>
 
-        <div class="card-dark p-6 sm:col-span-2 reveal">
-          <h4 class="display text-xl mb-4" style="color: var(--light-coral);">Treatment plans we use</h4>
-          <ul class="space-y-3 text-sm" style="color: rgba(254, 239, 221, 0.86);">
-            <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">shield</span><div><strong style="color: var(--antique-white);">Chemical termite barriers.</strong> Trenched and treated around the perimeter using APVMA approved transfer products. 8 year warranty options.</div></li>
-            <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">construction</span><div><strong style="color: var(--antique-white);">Physical barriers.</strong> Installed during construction or renovation. Termimesh, granite particle, the lot.</div></li>
-            <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">my_location</span><div><strong style="color: var(--antique-white);">Baiting systems.</strong> In-ground stations around the property. Sentricon, Exterra, Nemesis depending on what suits the site.</div></li>
-            <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">healing</span><div><strong style="color: var(--antique-white);">Active colony treatment.</strong> Direct foam or dust into the live workings before we move to a barrier or bait plan.</div></li>
-            <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">event_repeat</span><div><strong style="color: var(--antique-white);">Annual monitoring.</strong> Yearly inspection on the book, so anything new gets caught early.</div></li>
-          </ul>
+      <!-- Row 2, left: photo aligned with right-side treatment plans -->
+      <figure class="reveal termite-photo termite-photo-bottom">
+        <div class="hero-image-frame h-full flex items-center justify-center">
+          <div class="text-center px-6" style="color: rgba(254, 239, 221, 0.35);">
+            <span class="material-symbols-outlined" style="font-size: 36px;">grass</span>
+            <p class="small mt-2 max-w-[220px] mx-auto">Photo placeholder: Termite damage in a length of pine, macro detail.</p>
+          </div>
         </div>
+      </figure>
+
+      <!-- Row 2, right: treatment plans -->
+      <div class="card-dark p-6 reveal termite-treatments">
+        <h4 class="display text-xl mb-4" style="color: var(--light-coral);">Treatment plans we use</h4>
+        <ul class="space-y-3 text-sm" style="color: rgba(254, 239, 221, 0.86);">
+          <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">shield</span><div><strong style="color: var(--antique-white);">Chemical termite barriers.</strong> Trenched and treated around the perimeter using APVMA approved transfer products. 8 year warranty options.</div></li>
+          <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">construction</span><div><strong style="color: var(--antique-white);">Physical barriers.</strong> Installed during construction or renovation. Termimesh, granite particle, the lot.</div></li>
+          <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">my_location</span><div><strong style="color: var(--antique-white);">Baiting systems.</strong> In-ground stations around the property. Sentricon, Exterra, Nemesis depending on what suits the site.</div></li>
+          <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">healing</span><div><strong style="color: var(--antique-white);">Active colony treatment.</strong> Direct foam or dust into the live workings before we move to a barrier or bait plan.</div></li>
+          <li class="flex gap-3"><span class="material-symbols-outlined flex-shrink-0" style="font-size: 18px; color: var(--racing-red);">event_repeat</span><div><strong style="color: var(--antique-white);">Annual monitoring.</strong> Yearly inspection on the book, so anything new gets caught early.</div></li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- ============================ PEST SEASONS ============================ -->
-  <section class="section" style="background: var(--cream-soft);">
+  <section class="section" style="background: var(--cream);">
     <div class="max-w-content mx-auto px-6 lg:px-12">
       <div class="text-center max-w-2xl mx-auto mb-14 space-y-4">
         <span class="pill pill-red-soft reveal">Perth pest calendar</span>
@@ -870,10 +981,10 @@
           </p>
         </div>
         <div class="md:col-span-5 flex md:justify-end reveal">
-          <a href="#quote" class="btn btn-outline-light">
+          <button type="button" class="btn btn-outline-light" data-open-quote data-quote-context="commercial">
             <span class="material-symbols-outlined" style="font-size: 18px;">mail</span>
             Request a commercial quote
-          </a>
+          </button>
         </div>
       </div>
 
@@ -941,12 +1052,12 @@
   </section>
 
   <!-- ============================ REVIEWS (MARQUEE, ALL 6) ============================ -->
-  <section id="reviews" class="section-tight" style="background: var(--cream-soft);">
+  <section id="reviews" class="section-tight" style="background: var(--night-bordeaux); background-image: radial-gradient(circle at 50% 0%, rgba(248, 119, 123, 0.06) 0%, transparent 50%);">
     <div class="max-w-content mx-auto px-6 lg:px-12 mb-10">
       <div class="text-center max-w-2xl mx-auto space-y-3">
-        <span class="pill pill-red-soft reveal">Reviews</span>
-        <h2 class="h2 display reveal" style="color: var(--night-bordeaux);">What Perth says about Mike.</h2>
-        <p class="text-base md:text-lg reveal" style="color: rgba(37, 22, 5, 0.72);">5.0 stars across our Google reviews. Real customers, real names, real Perth suburbs.</p>
+        <span class="pill pill-light reveal">Reviews</span>
+        <h2 class="h2 display reveal" style="color: var(--antique-white);">What Perth says about Mike.</h2>
+        <p class="text-base md:text-lg reveal" style="color: rgba(254, 239, 221, 0.72);">5.0 stars across our Google reviews. Real customers, real names, real Perth suburbs.</p>
       </div>
     </div>
 
@@ -1096,11 +1207,11 @@
     </div>
 
     <div class="text-center mt-10 max-w-content mx-auto px-6 lg:px-12">
-      <a href="https://g.page/r/CWSK8RgHgS1SEBM/review" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold reveal" style="color: var(--racing-red);">
+      <a href="https://g.page/r/CWSK8RgHgS1SEBM/review" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-bold reveal" style="color: var(--light-coral);">
         <span class="material-symbols-outlined" style="font-size: 18px;">open_in_new</span>
         Read all our Google reviews
       </a>
-      <p class="small italic mt-3 max-w-md mx-auto reveal" style="color: rgba(37, 22, 5, 0.65);">Had a job done by us recently? A review would mean the world. Five minutes for you, a lot for a family business.</p>
+      <p class="small italic mt-3 max-w-md mx-auto reveal" style="color: rgba(254, 239, 221, 0.7);">Had a job done by us recently? A review would mean the world. Five minutes for you, a lot for a family business.</p>
     </div>
   </section>
 
@@ -1179,7 +1290,7 @@
             <span class="material-symbols-outlined plus-icon">add</span>
           </summary>
           <div class="faq-answer-wrap"><div class="faq-answer-inner">
-            <p style="color: rgba(37, 22, 5, 0.82);">Easiest way is to ring or text Mike on <a href="tel:0426427299" style="color: var(--racing-red);" class="font-bold underline decoration-1 underline-offset-2">0426 427 299</a>. You can also fill in the quote form below and we'll come back to you the same day.</p>
+            <p style="color: rgba(37, 22, 5, 0.82);">Easiest way is to ring or text Mike on <a href="tel:0426427299" style="color: var(--racing-red);" class="font-bold underline decoration-1 underline-offset-2">0426 427 299</a>. Or hit <button type="button" data-open-quote class="font-bold underline decoration-1 underline-offset-2 inline" style="color: var(--racing-red); background: none; padding: 0; cursor: pointer;">the quote form</button> and we'll come back to you the same day.</p>
           </div></div>
         </details>
 
@@ -1206,122 +1317,21 @@
     </div>
   </section>
 
-  <!-- ============================ QUOTE (SPLIT CARD ON CREAM) ============================ -->
-  <section id="quote" class="section" style="background: var(--cream-soft);">
-    <div class="max-w-content mx-auto px-6 lg:px-12">
-      <div class="rounded-lg overflow-hidden grid md:grid-cols-12 reveal" style="background: var(--antique-white); box-shadow: 0 24px 60px rgba(37, 22, 5, 0.08); border: 1px solid rgba(78, 1, 16, 0.06);">
-
-        <!-- Left: bordeaux contact panel -->
-        <div class="md:col-span-5 p-8 lg:p-10" style="background: var(--night-bordeaux); background-image: radial-gradient(circle at 0% 0%, rgba(248, 119, 123, 0.08) 0%, transparent 50%);">
-          <span class="pill pill-light">Quote</span>
-          <h2 class="h2 display mt-4 mb-3" style="color: var(--antique-white);">A quote in 60 seconds.</h2>
-          <p class="text-base mb-8" style="color: rgba(254, 239, 221, 0.78);">Tell us what you've spotted and where you are. We'll come back to you the same day. If it's urgent, just ring or text.</p>
-
-          <div class="space-y-4">
-            <a href="tel:0426427299" class="flex items-center gap-3 group">
-              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(254, 239, 221, 0.1);">
-                <span class="material-symbols-outlined" style="color: var(--antique-white); font-size: 20px;">call</span>
-              </div>
-              <div>
-                <div class="small" style="color: rgba(254, 239, 221, 0.6);">Phone</div>
-                <div class="font-bold text-base group-hover:underline" style="color: var(--antique-white);">0426 427 299</div>
-              </div>
-            </a>
-            <a href="sms:0426427299" class="flex items-center gap-3 group">
-              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(254, 239, 221, 0.1);">
-                <span class="material-symbols-outlined" style="color: var(--antique-white); font-size: 20px;">sms</span>
-              </div>
-              <div>
-                <div class="small" style="color: rgba(254, 239, 221, 0.6);">Text</div>
-                <div class="font-bold text-base group-hover:underline" style="color: var(--antique-white);">0426 427 299</div>
-              </div>
-            </a>
-            <a href="mailto:richillpestcontrol@gmail.com" class="flex items-center gap-3 group">
-              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(254, 239, 221, 0.1);">
-                <span class="material-symbols-outlined" style="color: var(--antique-white); font-size: 20px;">mail</span>
-              </div>
-              <div>
-                <div class="small" style="color: rgba(254, 239, 221, 0.6);">Email</div>
-                <div class="font-bold text-sm md:text-base group-hover:underline break-all" style="color: var(--antique-white);">richillpestcontrol@gmail.com</div>
-              </div>
-            </a>
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(254, 239, 221, 0.1);">
-                <span class="material-symbols-outlined" style="color: var(--antique-white); font-size: 20px;">schedule</span>
-              </div>
-              <div>
-                <div class="small" style="color: rgba(254, 239, 221, 0.6);">Hours</div>
-                <div class="font-bold text-base" style="color: var(--antique-white);">7 days, 7am to 6pm</div>
-              </div>
-            </div>
-          </div>
-
-          <blockquote class="mt-10 pt-8" style="border-top: 1px solid rgba(254, 239, 221, 0.12);">
-            <p class="pull" style="color: var(--light-coral);">"No call centres here. You ring, you get me."</p>
-            <p class="micro mt-3" style="color: rgba(254, 239, 221, 0.7);">Mike, owner</p>
-          </blockquote>
-        </div>
-
-        <!-- Right: cream form -->
-        <div class="md:col-span-7 p-8 lg:p-10">
-          <h3 class="display text-2xl mb-2" style="color: var(--night-bordeaux);">Send a quick request</h3>
-          <p class="small mb-6" style="color: rgba(37, 22, 5, 0.7);">Same day reply, no obligation.</p>
-
-          <form id="quoteForm" novalidate>
-            <div id="formFields" class="space-y-4">
-              <div>
-                <label class="field-label" for="q-name">Your name</label>
-                <input class="field-input" id="q-name" name="name" type="text" required autocomplete="name" />
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="field-label" for="q-phone">Best phone number</label>
-                  <input class="field-input" id="q-phone" name="phone" type="tel" required autocomplete="tel" />
-                </div>
-                <div>
-                  <label class="field-label" for="q-suburb">Suburb</label>
-                  <input class="field-input" id="q-suburb" name="suburb" type="text" required autocomplete="address-level2" />
-                </div>
-              </div>
-              <div>
-                <label class="field-label" for="q-pest">What pest are you seeing?</label>
-                <select class="field-select" id="q-pest" name="pest" required>
-                  <option value="">Choose one</option>
-                  <option>Ants</option>
-                  <option>Cockroaches</option>
-                  <option>Rats or mice</option>
-                  <option>Spiders</option>
-                  <option>Termites</option>
-                  <option>Bed bugs</option>
-                  <option>Fleas</option>
-                  <option>Wasps or bees</option>
-                  <option>Not sure</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div>
-                <label class="field-label" for="q-message">A few words about what's going on (optional)</label>
-                <textarea class="field-textarea" id="q-message" name="message" rows="3"></textarea>
-              </div>
-              <label class="flex items-start gap-3 cursor-pointer">
-                <input type="checkbox" id="q-lowtox" name="lowtox" class="mt-1 w-5 h-5 accent-[#EE1C20] rounded" />
-                <span class="text-sm" style="color: var(--dark-coffee);">I'm interested in the low tox option.</span>
-              </label>
-              <button type="submit" class="btn btn-primary w-full mt-2">
-                <span class="material-symbols-outlined" style="font-size: 18px;">send</span>
-                Send my quote request
-              </button>
-              <p class="small mt-2" style="color: rgba(37, 22, 5, 0.6);">We only use your details to send you a quote. We don't share them, we don't sign you up to anything.</p>
-              <div id="formError" class="hidden small font-bold pt-1" role="alert" style="color: var(--racing-red);"></div>
-            </div>
-
-            <div id="formSuccess" class="hidden text-center py-8">
-              <span class="material-symbols-outlined" style="font-size: 56px; color: var(--racing-red);">verified</span>
-              <h3 class="h3 display mt-2 mb-2" style="color: var(--night-bordeaux);">Cheers, your request is on the way to Mike.</h3>
-              <p class="text-base" style="color: rgba(37, 22, 5, 0.8);">He'll be in touch the same day. If it's urgent, ring or text <a href="tel:0426427299" style="color: var(--racing-red);" class="font-bold underline">0426 427 299</a>.</p>
-            </div>
-          </form>
-        </div>
+  <!-- ============================ CLOSING CTA (flows into footer) ============================ -->
+  <section id="quote" class="section-tight" style="background: var(--night-bordeaux); background-image: radial-gradient(circle at 50% 100%, rgba(238, 28, 32, 0.12) 0%, transparent 55%);">
+    <div class="max-w-content mx-auto px-6 lg:px-12 text-center">
+      <span class="pill pill-light reveal">Ready when you are</span>
+      <h2 class="h2 display mt-5 mb-4 reveal" style="color: var(--antique-white);">Sorted in one quick call.</h2>
+      <p class="text-base md:text-lg max-w-xl mx-auto mb-8 reveal" style="color: rgba(254, 239, 221, 0.78);">Same day reply on the form, or ring Mike direct. Either works.</p>
+      <div class="flex flex-wrap gap-3 justify-center reveal">
+        <button type="button" class="btn btn-primary glow" data-open-quote>
+          <span class="material-symbols-outlined" style="font-size: 18px;">edit_note</span>
+          Get a free quote
+        </button>
+        <a href="tel:0426427299" class="btn btn-outline-light">
+          <span class="material-symbols-outlined" style="font-size: 18px;">call</span>
+          Call or text 0426 427 299
+        </a>
       </div>
     </div>
   </section>
@@ -1329,7 +1339,7 @@
 </main>
 
 <!-- ============================ FOOTER ============================ -->
-<footer style="background: var(--night-bordeaux); color: var(--antique-white);">
+<footer style="background: var(--dark-coffee); color: var(--antique-white);">
   <div class="max-w-content mx-auto px-6 lg:px-12 pt-16 lg:pt-20 pb-10 grid md:grid-cols-12 gap-10">
     <div class="md:col-span-5 space-y-4">
       <a href="#home" class="flex items-center gap-3" aria-label="Richill Pest Control home">
@@ -1353,7 +1363,7 @@
         <a href="#area" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">Service area</a>
         <a href="#reviews" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">Reviews</a>
         <a href="#faqs" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">FAQs</a>
-        <a href="#quote" class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">Get a quote</a>
+        <a href="#quote" data-open-quote class="hover:text-light-coral" style="color: rgba(254, 239, 221, 0.82);">Get a quote</a>
       </nav>
     </div>
 
@@ -1403,6 +1413,81 @@
   <a href="sms:0426427299" aria-label="Text Mike">
     <span class="material-symbols-outlined">sms</span> Text Mike
   </a>
+</div>
+
+<!-- ============================ QUOTE MODAL ============================ -->
+<div class="quote-modal-wrap" id="quoteModal" role="dialog" aria-modal="true" aria-labelledby="quoteModalTitle" aria-hidden="true">
+  <div class="quote-backdrop" data-close-quote></div>
+  <div class="quote-modal" role="document">
+    <div class="quote-modal-header">
+      <div>
+        <span class="pill pill-red-soft" style="font-size: 10px;">Quote</span>
+        <h2 id="quoteModalTitle" class="display mt-2" style="font-size: 22px; line-height: 1.2; color: var(--night-bordeaux);">A quote in 60 seconds.</h2>
+        <p class="small mt-1" style="color: rgba(37, 22, 5, 0.65);">Same day reply. Or ring Mike on <a href="tel:0426427299" style="color: var(--racing-red);" class="font-bold">0426 427 299</a>.</p>
+      </div>
+      <button type="button" class="quote-close-btn" aria-label="Close" data-close-quote>
+        <span class="material-symbols-outlined" style="font-size: 22px;">close</span>
+      </button>
+    </div>
+
+    <div class="quote-modal-body">
+      <form id="quoteForm" novalidate>
+        <div id="formFields" class="space-y-4">
+          <div>
+            <label class="field-label" for="q-name">Your name</label>
+            <input class="field-input" id="q-name" name="name" type="text" required autocomplete="name" />
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="field-label" for="q-phone">Best phone number</label>
+              <input class="field-input" id="q-phone" name="phone" type="tel" required autocomplete="tel" />
+            </div>
+            <div>
+              <label class="field-label" for="q-suburb">Suburb</label>
+              <input class="field-input" id="q-suburb" name="suburb" type="text" required autocomplete="address-level2" />
+            </div>
+          </div>
+          <div>
+            <label class="field-label" for="q-pest">What pest are you seeing?</label>
+            <select class="field-select" id="q-pest" name="pest" required>
+              <option value="">Choose one</option>
+              <option>Ants</option>
+              <option>Cockroaches</option>
+              <option>Rats or mice</option>
+              <option>Spiders</option>
+              <option>Termites</option>
+              <option>Bed bugs</option>
+              <option>Fleas</option>
+              <option>Wasps or bees</option>
+              <option>Commercial enquiry</option>
+              <option>Not sure</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" for="q-message">A few words about what's going on (optional)</label>
+            <textarea class="field-textarea" id="q-message" name="message" rows="3"></textarea>
+          </div>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" id="q-lowtox" name="lowtox" class="mt-1 w-5 h-5 accent-[#EE1C20] rounded" />
+            <span class="text-sm" style="color: var(--dark-coffee);">I'm interested in the low tox option.</span>
+          </label>
+          <button type="submit" class="btn btn-primary w-full mt-2">
+            <span class="material-symbols-outlined" style="font-size: 18px;">send</span>
+            Send my quote request
+          </button>
+          <p class="small mt-2" style="color: rgba(37, 22, 5, 0.6);">We only use your details to send you a quote. We don't share them, we don't sign you up to anything.</p>
+          <div id="formError" class="hidden small font-bold pt-1" role="alert" style="color: var(--racing-red);"></div>
+        </div>
+
+        <div id="formSuccess" class="hidden text-center py-6">
+          <span class="material-symbols-outlined" style="font-size: 48px; color: var(--racing-red);">verified</span>
+          <h3 class="h3 display mt-2 mb-2" style="color: var(--night-bordeaux);">Cheers, your request is on the way to Mike.</h3>
+          <p class="text-base" style="color: rgba(37, 22, 5, 0.8);">He'll be in touch the same day. If it's urgent, ring or text <a href="tel:0426427299" style="color: var(--racing-red);" class="font-bold underline">0426 427 299</a>.</p>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 
 <!-- ============================ GSAP ============================ -->
@@ -1679,6 +1764,114 @@
     });
   }
 
+  // ============== QUOTE MODAL ==============
+  function initQuoteModal() {
+    const wrap = document.getElementById('quoteModal');
+    if (!wrap) return;
+    const backdrop = wrap.querySelector('.quote-backdrop');
+    const modal = wrap.querySelector('.quote-modal');
+    let lastTrigger = null;
+    let isOpen = false;
+
+    function focusables() {
+      return modal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+    }
+
+    function open(triggerEl, context) {
+      if (isOpen) return;
+      isOpen = true;
+      lastTrigger = triggerEl;
+      wrap.classList.add('open');
+      wrap.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+
+      // Pre-fill pest dropdown if commercial context
+      const pestSelect = document.getElementById('q-pest');
+      if (context === 'commercial' && pestSelect) {
+        for (const opt of pestSelect.options) {
+          if (opt.value === 'Commercial enquiry' || opt.text === 'Commercial enquiry') {
+            pestSelect.value = opt.value || opt.text;
+            break;
+          }
+        }
+      }
+
+      if (prefersReduced) {
+        gsap.set(backdrop, { autoAlpha: 1 });
+        gsap.set(modal, { autoAlpha: 1, y: 0, scale: 1 });
+      } else {
+        gsap.set(backdrop, { autoAlpha: 0 });
+        gsap.set(modal, { autoAlpha: 0, y: 16, scale: 0.97 });
+        gsap.to(backdrop, { autoAlpha: 1, duration: 0.24, ease: EASE });
+        gsap.to(modal, { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: EASE, delay: 0.06 });
+      }
+
+      // Move focus to first input after the animation kicks off
+      setTimeout(() => {
+        const firstInput = modal.querySelector('input, select, textarea');
+        if (firstInput) firstInput.focus();
+      }, 180);
+    }
+
+    function close() {
+      if (!isOpen) return;
+      isOpen = false;
+
+      const finish = () => {
+        wrap.classList.remove('open');
+        wrap.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
+        lastTrigger = null;
+      };
+
+      if (prefersReduced) {
+        finish();
+      } else {
+        gsap.to(modal, { autoAlpha: 0, y: 12, scale: 0.98, duration: 0.22, ease: 'power3.in' });
+        gsap.to(backdrop, { autoAlpha: 0, duration: 0.26, ease: 'power3.in', onComplete: finish });
+      }
+    }
+
+    // Open triggers (event delegation)
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-open-quote]');
+      if (!trigger) return;
+      e.preventDefault();
+      const context = trigger.getAttribute('data-quote-context') || '';
+      open(trigger, context);
+    });
+
+    // Close triggers
+    wrap.addEventListener('click', (e) => {
+      if (e.target.closest('[data-close-quote]')) {
+        e.preventDefault();
+        close();
+      }
+    });
+
+    // ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) close();
+
+      // Basic focus trap
+      if (e.key === 'Tab' && isOpen) {
+        const list = Array.from(focusables());
+        if (!list.length) return;
+        const first = list[0];
+        const last = list[list.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault(); first.focus();
+        }
+      }
+    });
+
+    // Reset form state when reopening after a successful submit
+    wrap.addEventListener('transitionend', () => { /* nop */ });
+  }
+
   // ============== INIT ==============
   function init() {
     initNav();
@@ -1689,6 +1882,7 @@
     initMarquee();
     initFAQ();
     initQuoteForm();
+    initQuoteModal();
   }
 
   if (document.readyState === 'loading') {
